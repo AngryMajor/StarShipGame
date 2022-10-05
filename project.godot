@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Region",
 "language": "GDScript",
-"path": "res://Components/Regions/Region.gd"
+"path": "res://Region.gd"
 }, {
 "base": "Node",
 "class": "RegionComponent",

@@ -21,41 +21,43 @@ func _enter_tree():
 func _ready():
 	_set_up_children()
 	_tilemaps.render_tiles()
-	
+
+
 func _set_up_children():
 	for component in _components.get_children():
 		component.connect("data_updated",self,"on_tile_data_updated")
 
 func on_tile_data_updated(coord):
-	_tilemaps._render_tile(coord)
+	_tilemaps.render_tile(coord)
 
 func map_coords(function:FuncRef,tileRangeLower=null,tileRangeUpper=null, args=[]) -> Array:
 	var returnArray = []
-	
-	args.push_front(Vector2())
+
 	if tileRangeUpper == null:
 		tileRangeUpper = Vector2(MAP_SIZE_X,MAP_SIZE_Y)
 	if tileRangeLower == null:
 		tileRangeLower = Vector2(0,0)
 
-	for x in range(tileRangeLower.x,tileRangeUpper.x):
+	args.push_front(Vector2())
+	
+	for y in range(tileRangeLower.y,tileRangeUpper.y):
 		returnArray.append([])
-		for y in range(tileRangeLower.y,tileRangeUpper.y):
+		for x in range(tileRangeLower.x,tileRangeUpper.x):
 			args[0] = Vector2(x,y)
 			returnArray[returnArray.size()-1].append(function.call_funcv(args))
 
 	return returnArray
 
-func map_componnents(functionName:String,args=[]) -> Array:
-	var returnArray = []
+func map_componnents(functionName:String,args=[]) -> Dictionary:
+	var returnMap = {}
 	
 	for child in _components.get_children():
 		if child.has_method(functionName):
-			returnArray.append(child.callv(functionName,args))
+			returnMap[child.name] = child.callv(functionName,args)
 		else:
-			returnArray.append(null)
+			returnMap[child.name] = null
 	
-	return returnArray
+	return returnMap
 
 func convert_world_to_map_coors(world_coords):
 	return (self.to_local(world_coords)/TILE_SIZE).floor()

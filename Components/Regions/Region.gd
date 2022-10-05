@@ -1,5 +1,5 @@
 extends Node
-class_name Region
+
 
 onready var id = get_position_in_parent()
 

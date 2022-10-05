@@ -116,5 +116,3 @@ size_flags_vertical = 3
 [connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button3" to="MouseControler" method="_on_Button_NewCommandSet"]
 
 [editable path="World"]
-[editable path="World/Components/RegionComp"]
-[editable path="World/Components/RegionComp/Components/MissionComp"]
