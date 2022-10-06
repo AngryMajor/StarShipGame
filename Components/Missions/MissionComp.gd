@@ -1,30 +1,53 @@
 extends Node
+class_name MissionComp
+
+signal data_updated
+var missionScript = preload("res://Components/Missions/Mission.gd")
+var mission_map = {}
+
+onready var world = GameState.world
+
+func get_data(coord):
+	if mission_at(coord) == null:
+		return {}
+	else:
+		return {"Mission":mission_at(coord)}
+
+func mission_at(coord):
+	if coord in mission_map:
+		return mission_map[coord]
+	else:
+		return null
 
 func _ready():
-	$MissionGenerator.connect("new_mission_available",self,"on_new_mission")
-	call_deferred("asign_mission_to",0,$MissionGenerator.generate_new_mission())
-	call_deferred("asign_mission_to",1,$MissionGenerator.generate_new_mission())
-	call_deferred("asign_mission_to",2,$MissionGenerator.generate_new_mission())
+	_gen_new_mission()
+	_gen_new_mission()
+	_gen_new_mission()
+	GameState.connect("time_progressed",self,"_on_time_progressed")
 	
-
-func set_num_entities(num):
-	$MissionGenerator.set_num_entities(num)
-	for child in $MissionList.get_children():
-		child.queue_free()
+func _on_time_progressed(amount):
+	_gen_new_mission()
+	
+func _gen_new_mission():
+	var regionId = rand_range(0,6) as int
+	Add_mission(regionId)
+	
+func Add_mission(regionID:int):
+	var targetRegion :Region= world.regionMap.get_region(regionID)
+	
+	var coord = targetRegion.request_reserved_coord()
+	if coord != null:
+		var missionNode = Node.new()
+		missionNode.set_script(missionScript)
+		$MissionList.add_child(missionNode)
+		mission_map[coord] = missionNode
 		
-	for i in range(num):
-		$MissionList.add_child(Node.new())
-
-func _subscribe_to_signals(mission):
-	pass
+		missionNode.connect("MissionComplete",self,"mission_freeing",[coord])
+		missionNode.connect("MissionTimedOut",self,"mission_freeing",[coord])
+		
+		emit_signal("data_updated",coord)
+		
+func mission_freeing(mission,coord):
+	mission_map.erase(coord)
+	emit_signal("data_updated",coord)
 	
-func asign_mission_to(region_id, mission):
-	_subscribe_to_signals(mission)
-	$MissionList.get_child(region_id).add_child(mission)
-	
-	var slot = $"../../".get_region(region_id).request_visual_slot(mission) #TODO: fix
-	mission.assign_slot(slot)
-
-	
-func get_missions_in(region_id):
-	return $MissionList.get_child(region_id).get_children()

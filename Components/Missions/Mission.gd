@@ -1,6 +1,8 @@
 extends Node
 class_name Mission
 
+var region
+
 signal MissionComplete()
 signal MissionTimedOut()
 
@@ -11,7 +13,6 @@ export(Resource) var effect_failed = null
 export(Resource) var effect_ongoing = null
 
 onready var region_id = get_parent().get_index()
-var my_slot : RegionVisualSlot
 var _completed = false
 
 func _enter_tree():
@@ -46,9 +47,5 @@ func complete():
 
 func _remove_mission():
 	$"../".remove_child(self)
-	my_slot.target = null
 	queue_free()
-
-func assign_slot(slot):
-	my_slot = slot
 

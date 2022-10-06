@@ -1,4 +1,5 @@
 extends TileMap
+class_name RegionMap
 
 onready var num_regions = $RegionList.get_child_count()
 onready var world = GameState.world
@@ -12,7 +13,7 @@ func _setup_region_coords():
 func _setup_coord(coord):
 	var region := get_region_for(coord)
 	if region != null:
-		region.MyCoords.append(coord)
+		region._add_cord(coord)
 
 func get_region_for(coord) -> Region:
 	var index = get_cellv(coord)-16
@@ -30,3 +31,7 @@ func map_regions(function:FuncRef, args=[]) -> Array:
 		returnArray.append(function.call_func(args))
 	
 	return returnArray
+
+func get_region(index : int) -> Region:
+	return $RegionList.get_child(index) as Region
+	return $RegionList.get_child(index) as Region

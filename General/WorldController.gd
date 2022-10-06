@@ -9,10 +9,10 @@ const MAP_SIZE_Y = 64
 onready var _tilemaps = $TileMaps
 onready var _components = $Components
 
-onready var regionComp : RegionComponent setget ,get_region_comp
+var regionMap : RegionMap setget ,get_regions
 
-func get_region_comp():
-	return $Components/RegionComp
+func get_regions():
+	return $RegionsMap
 
 
 func _enter_tree():

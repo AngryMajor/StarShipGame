@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://World.tscn" type="PackedScene" id=1]
+[ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MouseController/MouseStates/DefaultState.gd" type="Script" id=3]
 [ext_resource path="res://General/RegionDisplayPannel.gd" type="Script" id=5]
-[ext_resource path="res://Components/Regions/RegionPannel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://MouseController/MouseStates/InspectState.gd" type="Script" id=9]
+[ext_resource path="res://GUI/RegionGUI/RegionPannel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
 [ext_resource path="res://MouseController/MouseStates/RightInspector.gd" type="Script" id=12]
 [ext_resource path="res://GUI/Command Pannel/CommandButton.gd" type="Script" id=16]
@@ -17,10 +16,6 @@
 
 [node name="MouseControler" type="Node2D" parent="."]
 script = ExtResource( 20 )
-
-[node name="Inspect" type="Node" parent="MouseControler"]
-script = ExtResource( 9 )
-Inspector = NodePath("../../GUILayer/RightInspector")
 
 [node name="MisssionInspector" type="Node" parent="MouseControler"]
 script = ExtResource( 19 )
@@ -76,22 +71,15 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="GUILayer/CommandPannel/HBoxContainer"]
-margin_right = 60.0
-margin_bottom = 100.0
-text = "Inspect"
-script = ExtResource( 16 )
-
 [node name="Button2" type="Button" parent="GUILayer/CommandPannel/HBoxContainer"]
-margin_left = 64.0
-margin_right = 194.0
+margin_right = 130.0
 margin_bottom = 100.0
 text = "MisssionInspector"
 script = ExtResource( 16 )
 
 [node name="Button3" type="Button" parent="GUILayer/CommandPannel/HBoxContainer"]
-margin_left = 198.0
-margin_right = 301.0
+margin_left = 134.0
+margin_right = 237.0
 margin_bottom = 100.0
 text = "RegionInspect"
 script = ExtResource( 16 )
@@ -102,7 +90,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -280.0
 script = ExtResource( 5 )
-RegionList = NodePath("../../World/Components/RegionComp/RegionList")
+RegionList = NodePath("../../World/RegionsMap/RegionList")
 RegionDispaly = ExtResource( 6 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/RegionDisplay"]
@@ -111,7 +99,6 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button" to="MouseControler" method="_on_Button_NewCommandSet"]
 [connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button2" to="MouseControler" method="_on_Button_NewCommandSet"]
 [connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button3" to="MouseControler" method="_on_Button_NewCommandSet"]
 
