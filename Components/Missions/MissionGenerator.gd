@@ -1,6 +1,6 @@
 extends Node
 
-export var mission_to_generate : PackedScene
+export var mission_to_generate : Array
 export var Mission_Comp : NodePath
 onready var missionComp = get_node(Mission_Comp)
 
@@ -10,5 +10,6 @@ func _unhandled_input(event):
 		missionComp.add_mission(region_index, gen_mission())
 
 func gen_mission():
-	var mission = mission_to_generate.instance()
+	var index = rand_range(0,mission_to_generate.size())
+	var mission = mission_to_generate[index].instance()
 	return mission

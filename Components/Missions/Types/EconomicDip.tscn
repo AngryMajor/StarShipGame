@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Components/Missions/Mission.gd" type="Script" id=1]
+[ext_resource path="res://General/Regions/Components/Econemy/Effects/DipEconomicEffect.gd" type="Script" id=2]
+
+[node name="Eco Dip" type="Node"]
+script = ExtResource( 1 )
+time_limit = -1
+effect_ongoing = ExtResource( 2 )
+icon_index = 2

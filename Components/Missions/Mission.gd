@@ -12,6 +12,8 @@ export(Resource) var effect_completed = null
 export(Resource) var effect_failed = null
 export(Resource) var effect_ongoing = null
 
+export(int) var icon_index = 0
+
 onready var region_id = get_parent().get_index()
 var _completed = false
 

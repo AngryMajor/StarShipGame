@@ -20,5 +20,5 @@ func process_tile_data(visual_data_array) -> Dictionary:
 	for data in visual_data_array.values():
 		if data != null:
 			if "Mission" in data and data["Mission"] != null:
-				returnDict["Main"] = 10
+				returnDict["Main"] = 10 + data["Mission"].icon_index
 	return returnDict

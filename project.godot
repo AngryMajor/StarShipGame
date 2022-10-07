@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "BaseEffect",
 "language": "GDScript",
-"path": "res://General/Regions/Components/Econemy/PosEconomicEffect.gd"
+"path": "res://General/Effects/BaseEffect.gd"
 }, {
 "base": "Node",
 "class": "Mission",

@@ -1,15 +1,13 @@
 extends Resource
 
-class_name BaseEffect
-
 static func trigger(mission):
-	pass
+	mission.region.get_component("Econemy").value -= 10
 
 static func start(mission):
-	mission.region.get_component("Econemy").value -= 10
+	pass
 	
 static func end(mission):
-	mission.region.get_component("Econemy").value += 10
+	pass
 
 static func trigger_ongoing(mission):
 	pass
