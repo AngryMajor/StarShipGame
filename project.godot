@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "BaseEffect",
 "language": "GDScript",
-"path": "res://Components/Missions/Effects/BaseEffect.gd"
+"path": "res://General/Regions/Components/Econemy/PosEconomicEffect.gd"
 }, {
 "base": "Node",
 "class": "Mission",
@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "BaseEffect",
 "class": "PrintMissionEffect",
 "language": "GDScript",
-"path": "res://Components/Missions/Effects/Print/PrintMissionEffect.gd"
+"path": "res://General/Effects/Print/PrintMissionEffect.gd"
 }, {
 "base": "BaseEffect",
 "class": "PrintRegionEffect",
 "language": "GDScript",
-"path": "res://Components/Missions/Effects/Print/PrintRegionEffect.gd"
+"path": "res://General/Effects/Print/PrintRegionEffect.gd"
 }, {
 "base": "Node",
 "class": "Region",

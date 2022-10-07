@@ -2,7 +2,7 @@
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MouseController/MouseStates/DefaultState.gd" type="Script" id=3]
-[ext_resource path="res://General/RegionDisplayPannel.gd" type="Script" id=5]
+[ext_resource path="res://GUI/RegionGUI/RegionDisplayPannel.gd" type="Script" id=5]
 [ext_resource path="res://GUI/RegionGUI/RegionPannel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
 [ext_resource path="res://MouseController/MouseStates/RightInspector.gd" type="Script" id=12]

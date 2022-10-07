@@ -21,6 +21,11 @@ func _enter_tree():
 func _exit_tree():
 	GameState.disconnect("time_progressed",self,"on_time_progress")
 
+func init(region):
+	self.region = region
+	if effect_ongoing != null:
+		effect_ongoing.start(self)
+
 func on_time_progress(amount):
 	if effect_ongoing != null:
 		effect_ongoing.trigger_ongoing(self,amount)
@@ -46,6 +51,8 @@ func complete():
 	_remove_mission()
 
 func _remove_mission():
+	if effect_ongoing != null:
+		effect_ongoing.end(self)
 	$"../".remove_child(self)
 	queue_free()
 

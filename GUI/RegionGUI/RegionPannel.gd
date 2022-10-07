@@ -5,6 +5,7 @@ onready var RegionComp
 onready var missionComp : MissionComp
 var my_region
 
+var econemyComp
 
 func init(region_data:Region):
 	RegionComp = GameState.world.regionMap
@@ -12,8 +13,16 @@ func init(region_data:Region):
 	my_region = region_data
 	_update_mission_count()
 	$HBoxContainer/NameLabel.text = region_data.name
+	
+	econemyComp = region_data.get_component("Econemy")
+	_on_Econemy_Changed()
+	econemyComp.connect("ValueChanged",self,"_on_Econemy_Changed")
+	
 	missionComp.connect("data_updated",self,"_on_mission_data_updated")
 	GameState.connect("time_progressed",self,"_on_time_progressed")
+
+func _on_Econemy_Changed():
+	$HBoxContainer/ValueLabel.text = String(econemyComp.value)
 
 func get_missions_func(coord):
 	if missionComp.mission_at(coord) != null:
@@ -41,3 +50,4 @@ func _update_mission_count():
 		lable2.text = String(mission.time_limit)
 		box.add_child(lable2)
 		$VBoxContainer.add_child(box)
+

@@ -5,7 +5,7 @@ signal data_updated
 var missionScript = preload("res://Components/Missions/Mission.gd")
 var mission_map = {}
 
-onready var world = GameState.world
+onready var world := GameState.world
 
 func get_data(coord):
 	if mission_at(coord) == null:

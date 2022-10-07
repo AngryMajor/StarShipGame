@@ -37,3 +37,10 @@ func release_reserved_coord(coord):
 	var index = reservedCoords.find(coord)
 	reservedCoords.remove(coord)
 	unreservedCoords.append(coord)
+
+func get_component(name:String):
+	for child in self.get_children():
+		if child.name == name:
+			return child
+	return null
+	
