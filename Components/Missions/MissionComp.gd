@@ -20,25 +20,17 @@ func mission_at(coord):
 		return null
 
 func _ready():
-	_gen_new_mission()
-	_gen_new_mission()
-	_gen_new_mission()
 	GameState.connect("time_progressed",self,"_on_time_progressed")
 	
 func _on_time_progressed(amount):
-	_gen_new_mission()
+	pass
 	
-func _gen_new_mission():
-	var regionId = rand_range(0,6) as int
-	Add_mission(regionId)
-	
-func Add_mission(regionID:int):
+func add_mission(regionID:int, missionNode):
 	var targetRegion :Region= world.regionMap.get_region(regionID)
 	
 	var coord = targetRegion.request_reserved_coord()
 	if coord != null:
-		var missionNode = Node.new()
-		missionNode.set_script(missionScript)
+		missionNode.init(targetRegion)
 		$MissionList.add_child(missionNode)
 		mission_map[coord] = missionNode
 		
