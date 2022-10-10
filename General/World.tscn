@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://General/WorldController.gd" type="Script" id=1]
 [ext_resource path="res://General/Regions/Regions.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://General/Regions/Components/Econemy/Effects/DipEconomicEffect.gd" type="Script" id=10]
 [ext_resource path="res://General/Regions/Components/Econemy/Effects/BonusEconomicEffect.gd" type="Script" id=11]
 [ext_resource path="res://General/Regions/Components/Econemy/Effects/NegEconomicEffect.gd" type="Script" id=12]
+[ext_resource path="res://General/ShipComp.gd" type="Script" id=13]
+[ext_resource path="res://Ship.tscn" type="PackedScene" id=14]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -74,6 +76,12 @@ script = ExtResource( 7 )
 script = ExtResource( 9 )
 mission_to_generate = [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ]
 Mission_Comp = NodePath("..")
+
+[node name="ShipComp" type="Node" parent="Components"]
+script = ExtResource( 13 )
+ship_scene = ExtResource( 14 )
+
+[node name="ShipList" type="Node" parent="Components/ShipComp"]
 
 [node name="TileMaps" type="Node" parent="."]
 script = ExtResource( 6 )

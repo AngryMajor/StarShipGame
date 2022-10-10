@@ -39,7 +39,8 @@ func add_mission(regionID:int, missionNode):
 		
 		emit_signal("data_updated",coord)
 		
-func mission_freeing(mission,coord):
+func mission_freeing(mission:Mission,coord):
 	mission_map.erase(coord)
+	mission.region.release_reserved_coord(coord)
 	emit_signal("data_updated",coord)
 	

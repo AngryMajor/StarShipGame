@@ -45,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://General/Regions/Regions.gd"
 }, {
 "base": "Node",
+"class": "Ship",
+"language": "GDScript",
+"path": "res://General/Ship.gd"
+}, {
+"base": "Node",
 "class": "TestState",
 "language": "GDScript",
 "path": "res://MouseController/MouseStates/TestState.gd"
@@ -62,6 +67,7 @@ _global_script_class_icons={
 "PrintRegionEffect": "",
 "Region": "",
 "RegionMap": "",
+"Ship": "",
 "TestState": "",
 "WorldController": ""
 }

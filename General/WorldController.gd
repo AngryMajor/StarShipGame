@@ -6,6 +6,14 @@ onready var TILE_SIZE = $TileMaps/Main.cell_size.x
 const MAP_SIZE_X = 64
 const MAP_SIZE_Y = 64
 
+var NORTH = Vector2(1,0)
+var EAST =  Vector2(0,1)
+var SOUTH =  Vector2(-1,0)
+var WEST =  Vector2(0,-1)
+var DIRECTIONS = [NORTH,EAST,SOUTH,WEST]
+
+		
+
 onready var _tilemaps = $TileMaps
 onready var _components = $Components
 

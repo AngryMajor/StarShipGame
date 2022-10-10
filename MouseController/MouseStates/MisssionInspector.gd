@@ -13,4 +13,3 @@ func handel_input(event_dict):
 	if mission != null:
 		mission.complete()
 		
-	GameState.progress_time(1)

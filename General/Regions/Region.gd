@@ -5,6 +5,7 @@ onready var id = self.get_index()
 var unreservedCoords = []
 var reservedCoords = []
 
+var neighbour_regions = []
 
 func map_coords_in(function : FuncRef, args=[]) -> Array:
 	var returnArray = []
@@ -24,6 +25,10 @@ func map_coords_in(function : FuncRef, args=[]) -> Array:
 func _add_cord(coord):
 	unreservedCoords.append(coord)
 
+func _add_neighbour_region(region:Region):
+	if region != null and not region in neighbour_regions:
+		neighbour_regions.append(region)
+
 func request_reserved_coord():
 	if unreservedCoords.size() == 0:
 		return null
@@ -35,7 +40,7 @@ func request_reserved_coord():
 		
 func release_reserved_coord(coord):
 	var index = reservedCoords.find(coord)
-	reservedCoords.remove(coord)
+	reservedCoords.remove(index)
 	unreservedCoords.append(coord)
 
 func get_component(name:String):
@@ -44,3 +49,5 @@ func get_component(name:String):
 			return child
 	return null
 	
+func adjacent_to(other:Region):
+	return other in neighbour_regions

@@ -14,6 +14,11 @@ func _setup_coord(coord):
 	var region := get_region_for(coord)
 	if region != null:
 		region._add_cord(coord)
+		for dir in GameState.world.DIRECTIONS:
+			var adj_coord = coord + dir
+			var adj_region := get_region_for(adj_coord)
+			if region != adj_region:
+				region._add_neighbour_region(adj_region)
 
 func get_region_for(coord) -> Region:
 	var index = get_cellv(coord)-16
@@ -34,4 +39,4 @@ func map_regions(function:FuncRef, args=[]) -> Array:
 
 func get_region(index : int) -> Region:
 	return $RegionList.get_child(index) as Region
-	return $RegionList.get_child(index) as Region
+
