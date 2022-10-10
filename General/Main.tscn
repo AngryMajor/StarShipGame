@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Types/EconomicDip.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://General/ShipControlerMouse.gd" type="Script" id=8]
 [ext_resource path="res://General/EndTurnButton.gd" type="Script" id=9]
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
+[ext_resource path="res://ShipGUICard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://MouseController/MouseStates/RightInspector.gd" type="Script" id=12]
 [ext_resource path="res://GUI/Command Pannel/CommandButton.gd" type="Script" id=16]
 [ext_resource path="res://MouseController/MouseStates/RegionInspect.gd" type="Script" id=17]
@@ -72,9 +73,14 @@ size_flags_vertical = 3
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -100.0
-margin_right = -284.0
+margin_left = 4.0
+margin_top = -191.0
+margin_right = -280.0
+margin_bottom = -91.0
 rect_min_size = Vector2( 0, 100 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/CommandPannel"]
 anchor_right = 1.0
@@ -128,13 +134,46 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -50.0
-margin_top = -56.0
-margin_right = 50.0
+margin_left = -46.0
+margin_top = -166.0
+margin_right = 54.0
+margin_bottom = -110.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "End Turn"
 script = ExtResource( 9 )
+
+[node name="ShipPannel" type="Panel" parent="GUILayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -98.0
+margin_right = -284.0
+margin_bottom = 2.0
+rect_min_size = Vector2( 0, 100 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/ShipPannel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ShipCard" parent="GUILayer/ShipPannel/HBoxContainer" instance=ExtResource( 11 )]
+margin_right = 100.0
+margin_bottom = 100.0
+
+[node name="ShipCard2" parent="GUILayer/ShipPannel/HBoxContainer" instance=ExtResource( 11 )]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 100.0
+
+[node name="ShipCard3" parent="GUILayer/ShipPannel/HBoxContainer" instance=ExtResource( 11 )]
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 100.0
 
 [connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button4" to="MouseControler" method="_on_Button_NewCommandSet"]
 [connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button2" to="MouseControler" method="_on_Button_NewCommandSet"]

@@ -29,8 +29,8 @@ func set_destination(destination:Region):
 		var intermidiaries = destination.neighbour_regions
 		var i = 0
 		var medium = null
-		while medium == null and i < intermidiaries.size():
-			if self.region.adjacent_to(intermidiaries[i]): 
+		while medium == null and i < intermidiaries.size(): #TODO: make building route recursize to any length
+			if self.region.adjacent_to(intermidiaries[i]):  
 				medium = intermidiaries[i]
 			i += 1
 		

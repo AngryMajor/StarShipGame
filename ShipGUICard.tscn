@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://General/ShipCommandGameTiles.png" type="Texture" id=1]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends TextureButton
+
+export(bool) var is_selected_ship = false setget _set_selected
+
+func _set_selected(value):
+	is_selected_ship = value
+	if value == true:
+		self.modulate = Color(1,1,1,1)
+	else:
+			self.modulate = Color(1,1,1,0.5)
+
+func _ready():
+	self.connect(\"button_down\",self,\"_on_button_down\")
+	self.is_selected_ship = false
+
+func _on_button_down():
+	self.is_selected_ship = not self.is_selected_ship
+
+"
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 448, 64, 64, 64 )
+
+[node name="ShipCard" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="ShipLabel" type="Label" parent="."]
+margin_top = 31.0
+margin_right = 52.0
+margin_bottom = 45.0
+text = "My_Ship"
+
+[node name="LocationLable" type="Label" parent="."]
+margin_top = 46.0
+margin_right = 55.0
+margin_bottom = 60.0
+text = "Region1"
+
+[node name="ActionLable" type="Label" parent="."]
+margin_top = 65.0
+margin_right = 65.0
+margin_bottom = 79.0
+text = "Moving To"
+
+[node name="TargetLable" type="Label" parent="."]
+margin_top = 79.0
+margin_right = 65.0
+margin_bottom = 93.0
+text = "Region2"
+
+[node name="ShipButton" type="TextureButton" parent="."]
+margin_top = 1.0
+margin_right = 100.0
+margin_bottom = 101.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = SubResource( 3 )
+expand = true
+script = SubResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="ShipButton"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 5
