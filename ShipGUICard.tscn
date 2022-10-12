@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://General/ShipCommandGameTiles.png" type="Texture" id=1]
+[ext_resource path="res://ShipGUICard.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
@@ -10,22 +11,28 @@ region = Rect2( 0, 128, 64, 64 )
 [sub_resource type="GDScript" id=2]
 script/source = "extends TextureButton
 
-export(bool) var is_selected_ship = false setget _set_selected
+export(bool) var is_ship_available = false setget _set_available
 
-func _set_selected(value):
-	is_selected_ship = value
+func _set_available(value):
+	is_ship_available = value
 	if value == true:
 		self.modulate = Color(1,1,1,1)
 	else:
-			self.modulate = Color(1,1,1,0.5)
+			self.modulate = Color(0.8,0.8,0.8,0.5)
 
 func _ready():
 	self.connect(\"button_down\",self,\"_on_button_down\")
-	self.is_selected_ship = false
 
 func _on_button_down():
-	self.is_selected_ship = not self.is_selected_ship
+	pass
 
+func rerender():
+	self.visible = false
+	self.visible = true
+
+func set_region_color(reginoid):
+	self.texture_normal.region.position.x = reginoid * 64
+	rerender()
 "
 
 [sub_resource type="AtlasTexture" id=1]
@@ -37,6 +44,21 @@ region = Rect2( 448, 64, 64, 64 )
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
+script = ExtResource( 2 )
+
+[node name="APText" type="Label" parent="."]
+margin_left = 44.0
+margin_top = 9.0
+margin_right = 109.0
+margin_bottom = 23.0
+text = "AP:"
+
+[node name="APLable" type="Label" parent="."]
+margin_left = 65.0
+margin_top = 9.0
+margin_right = 130.0
+margin_bottom = 23.0
+text = "111"
 
 [node name="ShipLabel" type="Label" parent="."]
 margin_top = 31.0

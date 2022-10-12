@@ -20,11 +20,13 @@ func ship_at(coord):
 
 func _ready():
 	var region = GameState.world.regionMap.get_region(0)
-	var ship = ship_scene.instance()
-	add_ship(ship,region)
+
+	for ship in $ShipList.get_children():
+		add_ship(ship,region)
 
 func add_ship(ship,region):
-	$ShipList.add_child(ship)
+	if ship.get_parent() != $ShipList:
+		$ShipList.add_child(ship)
 	_put_ship_in_region(ship,region)
 	ship.connect("RequestToMoveTo",self,"_move_ship_to",[ship])
 	
