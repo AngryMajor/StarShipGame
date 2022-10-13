@@ -50,9 +50,8 @@ current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
 script = ExtResource( 10 )
-speed = 400
 ScreenScrollspeed = 300
-screenScrollDistance = 10
+screenScrollDistance = 30
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
 

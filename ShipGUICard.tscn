@@ -61,28 +61,16 @@ margin_bottom = 23.0
 text = "111"
 
 [node name="ShipLabel" type="Label" parent="."]
-margin_top = 31.0
+margin_top = 41.0
 margin_right = 52.0
-margin_bottom = 45.0
+margin_bottom = 55.0
 text = "My_Ship"
 
 [node name="LocationLable" type="Label" parent="."]
-margin_top = 46.0
+margin_top = 56.0
 margin_right = 55.0
-margin_bottom = 60.0
+margin_bottom = 70.0
 text = "Region1"
-
-[node name="ActionLable" type="Label" parent="."]
-margin_top = 65.0
-margin_right = 65.0
-margin_bottom = 79.0
-text = "Moving To"
-
-[node name="TargetLable" type="Label" parent="."]
-margin_top = 79.0
-margin_right = 65.0
-margin_bottom = 93.0
-text = "Region2"
 
 [node name="ShipButton" type="TextureButton" parent="."]
 margin_top = 1.0
