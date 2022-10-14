@@ -37,7 +37,7 @@ func request_reserved_coord():
 		unreservedCoords.remove(0)
 		reservedCoords.append(targetCoord)
 		return targetCoord
-		
+
 func release_reserved_coord(coord):
 	var index = reservedCoords.find(coord)
 	reservedCoords.remove(index)

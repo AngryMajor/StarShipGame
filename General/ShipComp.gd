@@ -4,7 +4,11 @@ signal data_updated
 
 var ship_map = {}
 
-export var ship_scene : PackedScene
+func _ready():
+	var region = GameState.world.regionMap.get_region(0)
+	for ship in $ShipList.get_children():
+		add_ship(ship,region)
+	GameState.selectedShip = self.get_ships()[0]
 
 func get_data(coord):
 	var shipAt = ship_at(coord) 
@@ -20,21 +24,16 @@ func ship_at(coord):
 	else:
 		return null
 
-func _ready():
-	var region = GameState.world.regionMap.get_region(0)
-
-	for ship in $ShipList.get_children():
-		add_ship(ship,region)
-		
-	GameState.selectedShip = self.get_ships()[0]
-
 func add_ship(ship,region):
 	if ship.get_parent() != $ShipList:
 		$ShipList.add_child(ship)
 	_put_ship_in_region(ship,region)
 	ship.connect("RequestToMoveTo",self,"_move_ship_to",[ship])
 	
-	
+func _move_ship_to(region:Region,ship:Ship):
+	_remove_ship_from_its_region(ship)
+	_put_ship_in_region(ship,region)
+
 func _put_ship_in_region(ship,region):
 	var coord = region.request_reserved_coord()
 	ship_map[coord] = ship
@@ -63,14 +62,10 @@ func get_ship_coord(ship):
 		else:
 			i += 1
 			
-	if i == keys.size():
+	if i >= keys.size():
 		return null
 	else:
 		return keys[i]
-	
-func _move_ship_to(region:Region,ship:Ship):
-	_remove_ship_from_its_region(ship)
-	_put_ship_in_region(ship,region)
 	
 func get_ships():
 	return $ShipList.get_children()

@@ -7,6 +7,12 @@ var mission_map = {}
 
 onready var world := GameState.world
 
+func _ready():
+	GameState.connect("time_progressed",self,"_on_time_progressed")
+	
+func _on_time_progressed(amount):
+	pass
+	
 func get_data(coord):
 	if mission_at(coord) == null:
 		return {}
@@ -19,12 +25,6 @@ func mission_at(coord):
 	else:
 		return null
 
-func _ready():
-	GameState.connect("time_progressed",self,"_on_time_progressed")
-	
-func _on_time_progressed(amount):
-	pass
-	
 func add_mission(regionID:int, missionNode):
 	var targetRegion :Region= world.regionMap.get_region(regionID)
 	
@@ -34,12 +34,12 @@ func add_mission(regionID:int, missionNode):
 		$MissionList.add_child(missionNode)
 		mission_map[coord] = missionNode
 		
-		missionNode.connect("MissionComplete",self,"mission_freeing",[coord])
-		missionNode.connect("MissionTimedOut",self,"mission_freeing",[coord])
+		missionNode.connect("MissionComplete",self,"_mission_freeing",[coord])
+		missionNode.connect("MissionTimedOut",self,"_mission_freeing",[coord])
 		
 		emit_signal("data_updated",coord)
 		
-func mission_freeing(mission:Mission,coord):
+func _mission_freeing(mission:Mission,coord):
 	mission_map.erase(coord)
 	mission.region.release_reserved_coord(coord)
 	emit_signal("data_updated",coord)

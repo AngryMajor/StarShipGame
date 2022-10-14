@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://General/WorldController.gd" type="Script" id=1]
 [ext_resource path="res://General/Regions/Regions.gd" type="Script" id=2]
 [ext_resource path="res://General/MainTileSet.tres" type="TileSet" id=3]
 [ext_resource path="res://General/Regions/Region.gd" type="Script" id=4]
-[ext_resource path="res://Components/TestComp.gd" type="Script" id=5]
 [ext_resource path="res://General/TileMapController.gd" type="Script" id=6]
 [ext_resource path="res://Components/Missions/MissionComp.gd" type="Script" id=7]
 [ext_resource path="res://General/Regions/Components/Econemy/EconemyRegComp.gd" type="Script" id=8]
@@ -65,9 +64,6 @@ script = ExtResource( 8 )
 
 [node name="Components" type="Node" parent="."]
 
-[node name="TestComp" type="Node" parent="Components"]
-script = ExtResource( 5 )
-
 [node name="MissionComp" type="Node" parent="Components"]
 script = ExtResource( 7 )
 
@@ -77,10 +73,15 @@ script = ExtResource( 7 )
 script = ExtResource( 9 )
 mission_to_generate = [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ]
 Mission_Comp = NodePath("..")
+minMissionsPerTurn = 2
+maxMissionsPerTurn = 5
+
+[node name="HighlightComp" type="Node" parent="Components"]
+script = ExtResource( 15 )
+_shipComp = NodePath("../ShipComp")
 
 [node name="ShipComp" type="Node" parent="Components"]
 script = ExtResource( 13 )
-ship_scene = ExtResource( 14 )
 
 [node name="ShipList" type="Node" parent="Components/ShipComp"]
 
@@ -90,20 +91,15 @@ ship_scene = ExtResource( 14 )
 
 [node name="Excalaber3" parent="Components/ShipComp/ShipList" instance=ExtResource( 14 )]
 
-[node name="HighlightComp" type="Node" parent="Components"]
-script = ExtResource( 15 )
-highlight_currser = false
-_shipComp = NodePath("../ShipComp")
-
 [node name="TileMaps" type="Node" parent="."]
 script = ExtResource( 6 )
 
-[node name="Main" type="TileMap" parent="TileMaps"]
+[node name="Selection" type="TileMap" parent="TileMaps"]
 tile_set = ExtResource( 3 )
 format = 1
 tile_data = PoolIntArray( 1179715, 1, 1, 1179716, 1, 1, 1179717, 1, 1, 1179718, 1, 1, 1179719, 1, 1, 1245256, 1, 1, 1245257, 1, 1, 1245258, 1, 1, 1245259, 1, 1, 1245260, 1, 1, 1245261, 1, 1, 1245262, 1, 1, 1245263, 1, 1, 1245264, 1, 1, 1245265, 1, 1, 1245266, 1, 1, 1245267, 1, 1, 1310804, 1, 1 )
 
-[node name="Selection" type="TileMap" parent="TileMaps"]
+[node name="Main" type="TileMap" parent="TileMaps"]
 tile_set = ExtResource( 3 )
 format = 1
 tile_data = PoolIntArray( 1179715, 1, 1, 1179716, 1, 1, 1179717, 1, 1, 1179718, 1, 1, 1179719, 1, 1, 1245256, 1, 1, 1245257, 1, 1, 1245258, 1, 1, 1245259, 1, 1, 1245260, 1, 1, 1245261, 1, 1, 1245262, 1, 1, 1245263, 1, 1, 1245264, 1, 1, 1245265, 1, 1, 1245266, 1, 1, 1245267, 1, 1, 1310804, 1, 1 )
