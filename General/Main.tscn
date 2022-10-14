@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Types/EconomicDip.tscn" type="PackedScene" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://ShipGUICard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://MouseController/MouseStates/RightInspector.gd" type="Script" id=12]
 [ext_resource path="res://General/ShipPannel.gd" type="Script" id=13]
-[ext_resource path="res://GUI/Command Pannel/CommandButton.gd" type="Script" id=16]
 [ext_resource path="res://MouseController/MouseStates/RegionInspect.gd" type="Script" id=17]
 [ext_resource path="res://MouseController/MouseStates/TestState.gd" type="Script" id=18]
 [ext_resource path="res://MouseController/MouseStates/MisssionInspector.gd" type="Script" id=19]
@@ -23,6 +22,7 @@
 
 [node name="MouseControler" type="Node2D" parent="."]
 script = ExtResource( 20 )
+_highlightComp = NodePath("../World/Components/HighlightComp")
 
 [node name="ShipControler" type="Node" parent="MouseControler"]
 script = ExtResource( 8 )
@@ -69,51 +69,6 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CommandPannel" type="Panel" parent="GUILayer"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = -191.0
-margin_right = -280.0
-margin_bottom = -91.0
-rect_min_size = Vector2( 0, 100 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/CommandPannel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button4" type="Button" parent="GUILayer/CommandPannel/HBoxContainer"]
-margin_right = 98.0
-margin_bottom = 100.0
-focus_mode = 0
-enabled_focus_mode = 0
-text = "ShipControler"
-script = ExtResource( 16 )
-
-[node name="Button2" type="Button" parent="GUILayer/CommandPannel/HBoxContainer"]
-margin_left = 102.0
-margin_right = 232.0
-margin_bottom = 100.0
-focus_mode = 0
-enabled_focus_mode = 0
-text = "MisssionInspector"
-script = ExtResource( 16 )
-
-[node name="Button3" type="Button" parent="GUILayer/CommandPannel/HBoxContainer"]
-margin_left = 236.0
-margin_right = 339.0
-margin_bottom = 100.0
-focus_mode = 0
-enabled_focus_mode = 0
-text = "RegionInspect"
-script = ExtResource( 16 )
-
 [node name="RegionDisplay" type="Panel" parent="GUILayer"]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -129,20 +84,6 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="EndTurnButton" type="Button" parent="GUILayer"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -46.0
-margin_top = -166.0
-margin_right = 54.0
-margin_bottom = -110.0
-focus_mode = 0
-enabled_focus_mode = 0
-text = "End Turn"
-script = ExtResource( 9 )
-
 [node name="ShipPannel" type="Panel" parent="GUILayer"]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -157,6 +98,7 @@ __meta__ = {
 }
 shipGUICard = ExtResource( 11 )
 ship_List = NodePath("../../World/Components/ShipComp/ShipList")
+_shipComp = NodePath("../../World/Components/ShipComp")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/ShipPannel"]
 anchor_right = 1.0
@@ -164,8 +106,18 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button4" to="MouseControler" method="_on_Button_NewCommandSet"]
-[connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button2" to="MouseControler" method="_on_Button_NewCommandSet"]
-[connection signal="NewCommandSet" from="GUILayer/CommandPannel/HBoxContainer/Button3" to="MouseControler" method="_on_Button_NewCommandSet"]
+[node name="EndTurnButton" type="Button" parent="GUILayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 116.0
+margin_top = -77.0
+margin_right = 216.0
+margin_bottom = -21.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "End Turn"
+script = ExtResource( 9 )
 
 [editable path="World"]

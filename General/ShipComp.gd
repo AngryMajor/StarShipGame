@@ -7,10 +7,12 @@ var ship_map = {}
 export var ship_scene : PackedScene
 
 func get_data(coord):
-	if ship_at(coord) == null:
+	var shipAt = ship_at(coord) 
+	if shipAt == null:
 		return {}
 	else:
-		return {"Ship":ship_at(coord)}
+		var returnDict = {"Ship":shipAt}
+		return returnDict
 		
 func ship_at(coord):
 	if coord in ship_map:
@@ -23,6 +25,8 @@ func _ready():
 
 	for ship in $ShipList.get_children():
 		add_ship(ship,region)
+		
+	GameState.selectedShip = self.get_ships()[0]
 
 func add_ship(ship,region):
 	if ship.get_parent() != $ShipList:
@@ -55,15 +59,14 @@ func get_ship_coord(ship):
 	
 	while target == null and i < keys.size():
 		if ship_map[keys[i]] == ship:
-			target == ship
+			target = ship
 		else:
 			i += 1
 			
-		if i == keys.size():
-			push_error("tryed to find untracked ship")
-			return null
-		else:
-			return keys[i]
+	if i == keys.size():
+		return null
+	else:
+		return keys[i]
 	
 func _move_ship_to(region:Region,ship:Ship):
 	_remove_ship_from_its_region(ship)

@@ -1,20 +1,41 @@
 extends Control
 
 var my_ship : Ship
+export(Texture) var baseTexture : Texture
+signal ship_selection_request(ship)
 
 func init(ship:Ship):
+	var button = $ShipButton as TextureButton
+	var atlasTexture = AtlasTexture.new()
+	atlasTexture.atlas = baseTexture
+	atlasTexture.region.size = Vector2(64,64)
+	atlasTexture.region.position = Vector2(0,128)
+	button.texture_normal = atlasTexture
+	
 	my_ship = ship
 	my_ship.connect("DataUpdated",self,"_on_ship_updated")
 	$ShipLabel.text = my_ship.name
 	$APLable.text = String(my_ship.currAP)
 	display_ship_Region()
 	check_ship_available()
+	$ShipButton.connect("button_down",self,"on_button_down")
+	
+	GameState.connect("ship_selection_Changed",self,"on_ship_selection_changed")
+	on_ship_selection_changed()
+
+func on_ship_selection_changed():
+	if my_ship == GameState.selectedShip:
+		$ShipButton/HighlightTexture.visible = true
+	else:
+		$ShipButton/HighlightTexture.visible = false
 
 func _on_ship_updated():
 	$APLable.text = String(my_ship.currAP)
 	check_ship_available()
 	display_ship_Region()
 
+func on_button_down():
+	emit_signal("ship_selection_request",my_ship)
 	
 func display_ship_Region():
 	$LocationLable.text = my_ship.region.name
