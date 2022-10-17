@@ -18,6 +18,12 @@ func get_data(coord):
 		var returnDict = {"Ship":shipAt}
 		return returnDict
 		
+func get_text_for(coord):
+	if ship_at(coord) == null:
+		return null
+	else:
+		return String(ship_at(coord).name)
+		
 func ship_at(coord):
 	if coord in ship_map:
 		return ship_map[coord]

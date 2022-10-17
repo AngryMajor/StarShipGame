@@ -34,6 +34,9 @@ func on_tile_data_updated(coord):
 func convert_world_to_map_coors(world_coords):
 	return (self.to_local(world_coords)/TILE_SIZE).floor()
 
+func convert_map_to_world_coors(local_coords):
+	return self.to_global(local_coords*TILE_SIZE)
+
 func map_coords(function:FuncRef,tileRangeLower=null,tileRangeUpper=null, args=[]) -> Array:
 	var returnArray = []
 

@@ -19,6 +19,12 @@ func get_data(coord):
 	else:
 		return {"Mission":mission_at(coord)}
 
+func get_text_for(coord):
+	if mission_at(coord) == null:
+		return null
+	else:
+		return String(mission_at(coord).name)
+
 func mission_at(coord):
 	if coord in mission_map:
 		return mission_map[coord]
