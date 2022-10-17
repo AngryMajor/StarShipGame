@@ -4,6 +4,7 @@ extends Camera2D
 export (int) var speed = 200
 export (int) var ScreenScrollspeed = 200
 export (int) var screenScrollDistance = 5
+export(bool) var useEdgeScrolling : bool = false
 
 var velocity := Vector2()
 var scrollVelocity := Vector2()
@@ -27,7 +28,7 @@ func get_input():
 	
 func _input(event):
 
-	if event is InputEventMouseMotion:
+	if useEdgeScrolling and event is InputEventMouseMotion:
 		var windowSize = OS.get_window_size()
 		scrollVelocity = Vector2()
 		if event.position.x < screenScrollDistance:

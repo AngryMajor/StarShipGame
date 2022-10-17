@@ -118,7 +118,7 @@ margin_right = 216.0
 margin_bottom = -21.0
 focus_mode = 0
 enabled_focus_mode = 0
-text = "End Turn"
+text = "Engage!"
 script = ExtResource( 9 )
 
 [editable path="World"]
