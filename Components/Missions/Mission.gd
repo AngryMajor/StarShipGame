@@ -11,6 +11,7 @@ export var time_limit = 3
 export(Resource) var effect_completed = null
 export(Resource) var effect_failed = null
 export(Resource) var effect_ongoing = null
+export(String, MULTILINE) var Description = ""
 
 export(int) var icon_index = 0
 

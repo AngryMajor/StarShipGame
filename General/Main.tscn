@@ -22,7 +22,7 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 6 )
-region = Rect2( 320, 128, 64, 64 )
+region = Rect2( 64, 192, 64, 64 )
 
 [node name="Main" type="Node2D"]
 
@@ -121,11 +121,13 @@ text = "back"
 script = ExtResource( 14 )
 
 [node name="TextBlock" type="Label" parent="GUILayer/MissionDetails"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 margin_left = 10.0
 margin_top = 60.0
-margin_right = -10.0
-size_flags_horizontal = 3
+margin_right = -84.0
+margin_bottom = 295.0
+rect_scale = Vector2( 1.2, 1.2 )
 text = "asdf
 adsf
 asdf
@@ -140,5 +142,6 @@ wrn
 we
 gaqe
 gv"
+autowrap = true
 
 [editable path="World"]

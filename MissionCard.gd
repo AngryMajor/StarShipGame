@@ -34,8 +34,11 @@ func _on_button_pressed():
 	GameState.selection = myMission
 
 func _on_selection_changed():
-	pass
-
+	if GameState.selection == myMission:
+		$HightlightTexture.visible = true
+	else:
+		$HightlightTexture.visible = false
+			
 func rerender():
 	self.visible = false
 	self.visible = true

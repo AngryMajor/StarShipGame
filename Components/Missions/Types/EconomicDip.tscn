@@ -7,4 +7,6 @@
 script = ExtResource( 1 )
 time_limit = -1
 effect_ongoing = ExtResource( 2 )
+Description = "This is a mission.
+This mission, until completed,, will give the current region a penalty  to its econonemy"
 icon_index = 2

@@ -6,3 +6,5 @@
 [node name="Eco Neg" type="Node"]
 script = ExtResource( 1 )
 effect_failed = ExtResource( 3 )
+Description = "This is a mission.
+This mission, if not completed,, will give the current region a penalty to its econonemy"
