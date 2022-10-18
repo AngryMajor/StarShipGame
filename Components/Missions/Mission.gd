@@ -42,15 +42,17 @@ func on_time_progress(amount):
 func time_out():
 	if effect_failed != null:
 		effect_failed.trigger(self)
-	emit_signal("MissionTimedOut",self)
 	_remove_mission()
+	emit_signal("MissionTimedOut",self)
+
 
 func complete():
 	_completed = true
 	if effect_completed != null:
 		effect_completed.trigger(self)
-	emit_signal("MissionComplete",self)
 	_remove_mission()
+	emit_signal("MissionComplete",self)
+
 
 func _remove_mission():
 	if effect_ongoing != null:

@@ -1,17 +1,15 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Types/EconomicDip.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MouseController/MouseStates/DefaultState.gd" type="Script" id=3]
 [ext_resource path="res://Components/Missions/Types/EconomicNegEffect.tscn" type="PackedScene" id=4]
-[ext_resource path="res://GUI/RegionGUI/RegionDisplayPannel.gd" type="Script" id=5]
-[ext_resource path="res://GUI/RegionGUI/RegionPannel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://MissionListUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/Missions/Types/EcononmicPosibleBonus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://General/ShipControlerMouse.gd" type="Script" id=8]
 [ext_resource path="res://General/EndTurnButton.gd" type="Script" id=9]
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
 [ext_resource path="res://ShipGUICard.tscn" type="PackedScene" id=11]
-[ext_resource path="res://MouseController/MouseStates/RightInspector.gd" type="Script" id=12]
 [ext_resource path="res://General/ShipPannel.gd" type="Script" id=13]
 [ext_resource path="res://MouseController/MouseStates/RegionInspect.gd" type="Script" id=17]
 [ext_resource path="res://MouseController/MouseStates/TestState.gd" type="Script" id=18]
@@ -55,35 +53,6 @@ screenScrollDistance = 30
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
-[node name="RightInspector" type="Panel" parent="GUILayer"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -280.0
-script = ExtResource( 12 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/RightInspector"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="RegionDisplay" type="Panel" parent="GUILayer"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -280.0
-script = ExtResource( 5 )
-RegionList = NodePath("../../World/RegionsMap/RegionList")
-RegionDispaly = ExtResource( 6 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/RegionDisplay"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="ShipPannel" type="Panel" parent="GUILayer"]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -120,5 +89,8 @@ focus_mode = 0
 enabled_focus_mode = 0
 text = "Engage!"
 script = ExtResource( 9 )
+
+[node name="MissionList" parent="GUILayer" instance=ExtResource( 5 )]
+_MissionList = NodePath("../../World/Components/MissionComp/MissionList")
 
 [editable path="World"]
