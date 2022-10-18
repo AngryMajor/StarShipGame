@@ -2,12 +2,12 @@ extends Node
 
 var world : WorldController
 
-var selectedShip : Ship setget set_selected_ship
-signal ship_selection_Changed
+var selection setget set_selected
+signal selection_Changed
 
-func set_selected_ship(ship):
-	selectedShip = ship
-	emit_signal("ship_selection_Changed")
+func set_selected(target):
+	selection = target
+	emit_signal("selection_Changed")
 
 signal time_progressed(amount)
 

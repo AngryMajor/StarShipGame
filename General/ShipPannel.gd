@@ -15,4 +15,4 @@ func _ready():
 		card.connect("ship_selection_request",self,"on_ship_selection_request")
 		
 func on_ship_selection_request(ship:Ship):
-	GameState.selectedShip = ship
+	GameState.selection = ship

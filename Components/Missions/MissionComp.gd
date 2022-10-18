@@ -10,6 +10,22 @@ onready var world := GameState.world
 func _ready():
 	GameState.connect("time_progressed",self,"_on_time_progressed")
 	
+func get_mission_coord(ship):	
+	var keys = mission_map.keys()
+	var i = 0
+	var target = null
+	
+	while target == null and i < keys.size():
+		if mission_map[keys[i]] == ship:
+			target = ship
+		else:
+			i += 1
+			
+	if i >= keys.size():
+		return null
+	else:
+		return keys[i]
+	
 func _on_time_progressed(amount):
 	pass
 	

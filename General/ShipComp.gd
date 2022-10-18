@@ -8,7 +8,7 @@ func _ready():
 	var region = GameState.world.regionMap.get_region(0)
 	for ship in $ShipList.get_children():
 		add_ship(ship,region)
-	GameState.selectedShip = self.get_ships()[0]
+	GameState.selection = self.get_ships()[0]
 
 func get_data(coord):
 	var shipAt = ship_at(coord) 

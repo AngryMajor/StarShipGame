@@ -1,20 +1,28 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Types/EconomicDip.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MouseController/MouseStates/DefaultState.gd" type="Script" id=3]
 [ext_resource path="res://Components/Missions/Types/EconomicNegEffect.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MissionListUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://General/ShipCommandGameTiles.png" type="Texture" id=6]
 [ext_resource path="res://Components/Missions/Types/EcononmicPosibleBonus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://General/ShipControlerMouse.gd" type="Script" id=8]
 [ext_resource path="res://General/EndTurnButton.gd" type="Script" id=9]
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
 [ext_resource path="res://ShipGUICard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://General/MissionDetailsUI.gd" type="Script" id=12]
 [ext_resource path="res://General/ShipPannel.gd" type="Script" id=13]
+[ext_resource path="res://General/DeselectButton.gd" type="Script" id=14]
 [ext_resource path="res://MouseController/MouseStates/RegionInspect.gd" type="Script" id=17]
 [ext_resource path="res://MouseController/MouseStates/TestState.gd" type="Script" id=18]
 [ext_resource path="res://MouseController/MouseStates/MisssionInspector.gd" type="Script" id=19]
 [ext_resource path="res://MouseController/MouseControler.gd" type="Script" id=20]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 320, 128, 64, 64 )
 
 [node name="Main" type="Node2D"]
 
@@ -92,5 +100,45 @@ script = ExtResource( 9 )
 
 [node name="MissionList" parent="GUILayer" instance=ExtResource( 5 )]
 _MissionList = NodePath("../../World/Components/MissionComp/MissionList")
+
+[node name="MissionDetails" type="Control" parent="GUILayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 400, 0 )
+script = ExtResource( 12 )
+
+[node name="TextureRect" type="TextureRect" parent="GUILayer/MissionDetails"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 1 )
+expand = true
+
+[node name="Button" type="Button" parent="GUILayer/MissionDetails"]
+margin_right = 50.0
+margin_bottom = 50.0
+text = "back"
+script = ExtResource( 14 )
+
+[node name="TextBlock" type="Label" parent="GUILayer/MissionDetails"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 60.0
+margin_right = -10.0
+size_flags_horizontal = 3
+text = "asdf
+adsf
+asdf
+asd
+fasdghg
+wdfb
+ear
+gva'erg
+bn
+n 
+wrn
+we
+gaqe
+gv"
 
 [editable path="World"]

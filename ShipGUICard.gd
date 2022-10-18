@@ -20,11 +20,11 @@ func init(ship:Ship):
 	check_ship_available()
 	$ShipButton.connect("button_down",self,"on_button_down")
 	
-	GameState.connect("ship_selection_Changed",self,"on_ship_selection_changed")
-	on_ship_selection_changed()
+	GameState.connect("selection_Changed",self,"on_selection_changed")
+	on_selection_changed()
 
-func on_ship_selection_changed():
-	if my_ship == GameState.selectedShip:
+func on_selection_changed():
+	if my_ship == GameState.selection:
 		$ShipButton/HighlightTexture.visible = true
 	else:
 		$ShipButton/HighlightTexture.visible = false
