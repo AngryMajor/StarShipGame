@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 export(PackedScene) var missionCard : PackedScene
 

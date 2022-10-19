@@ -60,8 +60,8 @@ func on_selection_changed():
 	else:
 		var old_selection_coords = selected_coords
 		selected_coords = null
-		emit_signal("data_updated",old_selection_coords)
-
+		if old_selection_coords != null:
+			emit_signal("data_updated",old_selection_coords)
 		
 	
 func set_selected(coord):

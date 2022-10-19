@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Types/EconomicDip.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://General/MissionDetailsUI.gd" type="Script" id=12]
 [ext_resource path="res://General/ShipPannel.gd" type="Script" id=13]
 [ext_resource path="res://General/DeselectButton.gd" type="Script" id=14]
+[ext_resource path="res://RegionCard.tscn" type="PackedScene" id=15]
+[ext_resource path="res://General/RegionList.gd" type="Script" id=16]
 [ext_resource path="res://MouseController/MouseStates/RegionInspect.gd" type="Script" id=17]
 [ext_resource path="res://MouseController/MouseStates/TestState.gd" type="Script" id=18]
 [ext_resource path="res://MouseController/MouseStates/MisssionInspector.gd" type="Script" id=19]
@@ -65,10 +67,7 @@ screenScrollDistance = 30
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -146.0
-margin_right = -284.0
-margin_bottom = 2.0
-rect_min_size = Vector2( 0, 100 )
+margin_top = -100.0
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
@@ -99,34 +98,38 @@ text = "Engage!"
 script = ExtResource( 9 )
 
 [node name="MissionList" parent="GUILayer" instance=ExtResource( 5 )]
+margin_bottom = -100.0
 _MissionList = NodePath("../../World/Components/MissionComp/MissionList")
 
-[node name="MissionDetails" type="Control" parent="GUILayer"]
+[node name="MissionDetails" type="Control" parent="GUILayer/MissionList"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 400.0
 rect_min_size = Vector2( 400, 0 )
 script = ExtResource( 12 )
 
-[node name="TextureRect" type="TextureRect" parent="GUILayer/MissionDetails"]
+[node name="TextureRect" type="TextureRect" parent="GUILayer/MissionList/MissionDetails"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 50.0
 texture = SubResource( 1 )
 expand = true
 
-[node name="Button" type="Button" parent="GUILayer/MissionDetails"]
+[node name="Button" type="Button" parent="GUILayer/MissionList/MissionDetails"]
+margin_top = 50.0
 margin_right = 50.0
-margin_bottom = 50.0
+margin_bottom = 100.0
 text = "back"
 script = ExtResource( 14 )
 
-[node name="TextBlock" type="Label" parent="GUILayer/MissionDetails"]
+[node name="TextBlock" type="Label" parent="GUILayer/MissionList/MissionDetails"]
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
-margin_left = 10.0
-margin_top = 60.0
-margin_right = -84.0
-margin_bottom = 295.0
+margin_left = 14.0
+margin_top = 126.0
+margin_right = -80.0
+margin_bottom = 361.0
 rect_scale = Vector2( 1.2, 1.2 )
 text = "asdf
 adsf
@@ -143,5 +146,19 @@ we
 gaqe
 gv"
 autowrap = true
+
+[node name="RegionList" type="Panel" parent="GUILayer"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_right = -210.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 20 )
+script = ExtResource( 16 )
+_regionList = NodePath("../../World/RegionsMap/RegionList")
+_regionCard = ExtResource( 15 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/RegionList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [editable path="World"]
