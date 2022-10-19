@@ -7,6 +7,7 @@ var reservedCoords = []
 
 var neighbour_regions = []
 
+
 func map_coords_in(function : FuncRef, args=[]) -> Array:
 	var returnArray = []
 	args.push_front(Vector2())
@@ -48,6 +49,17 @@ func get_component(name:String):
 		if child.name == name:
 			return child
 	return null
-	
+
+func map_components(function : FuncRef, args=[]):
+	var returnArray = []
+	args.push_front(null)
+	for comp in self.get_children():
+		args[0] = comp
+		var returnValue = function.call_funcv(args)
+		if returnValue != null:
+			returnArray.append(returnValue)
+	return returnArray
+
+
 func adjacent_to(other:Region):
 	return other in neighbour_regions

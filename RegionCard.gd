@@ -2,7 +2,10 @@ extends TextureButton
 
 export(Texture) var baseTexture
 
+var my_region
+
 func init(region:Region):
+	my_region = region
 	$NameLabel.text = region.name
 	var tex = AtlasTexture.new() as AtlasTexture
 	tex.atlas = baseTexture
@@ -21,6 +24,7 @@ func _on_button_down():
 
 func _on_mouse_entered():
 	if not GameState.selection is Region:
+		$Tray.populate(my_region)
 		$Tray.visible = true
 	
 func _on_mouse_exited():
