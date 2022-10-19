@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Types/EconomicDip.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://MouseController/MouseStates/TestState.gd" type="Script" id=18]
 [ext_resource path="res://MouseController/MouseStates/MisssionInspector.gd" type="Script" id=19]
 [ext_resource path="res://MouseController/MouseControler.gd" type="Script" id=20]
+[ext_resource path="res://General/BigRegionTray.gd" type="Script" id=21]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -55,6 +56,7 @@ mission_to_generate = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ) ]
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
+zoom = Vector2( 0.7, 0.7 )
 smoothing_enabled = true
 smoothing_speed = 10.0
 script = ExtResource( 10 )
@@ -151,7 +153,7 @@ autowrap = true
 anchor_right = 1.0
 margin_left = 10.0
 margin_right = -210.0
-margin_bottom = 28.0
+margin_bottom = 34.0
 rect_min_size = Vector2( 0, 20 )
 script = ExtResource( 16 )
 _regionList = NodePath("../../World/RegionsMap/RegionList")
@@ -160,5 +162,13 @@ _regionCard = ExtResource( 15 )
 [node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/RegionList"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="BigRegionTray" type="Panel" parent="GUILayer/RegionList"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 52 )
+script = ExtResource( 21 )
 
 [editable path="World"]
