@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ShipCommandGameTiles.png-c3afe882b08af7d43d6b2a184991c251.stex"
+path="res://import/ShipCommandGameTiles.png-c3afe882b08af7d43d6b2a184991c251.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://General/ShipCommandGameTiles.png"
-dest_files=[ "res://.import/ShipCommandGameTiles.png-c3afe882b08af7d43d6b2a184991c251.stex" ]
+dest_files=[ "res://import/ShipCommandGameTiles.png-c3afe882b08af7d43d6b2a184991c251.stex" ]
 
 [params]
 
