@@ -8,6 +8,10 @@ var CurrMosueState setget _set_mouse_state
 func _ready():
 	self.CurrMosueState = get_child(0).name
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		highlightComp.currser_highlight_coords = null
+
 func _unhandled_input(event):
 	var _map = GameState.world
 	if event is InputEventMouseMotion:

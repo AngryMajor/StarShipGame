@@ -25,7 +25,8 @@ func set_curser_highlight(coord):
 	currser_highlight_coords = coord
 	if old_coord != null:
 		emit_signal("data_updated",old_coord)
-	emit_signal("data_updated",currser_highlight_coords)
+	if currser_highlight_coords != null:
+		emit_signal("data_updated",currser_highlight_coords)
 
 func set_highlight_selected(value):
 	highlight_selected = value

@@ -1,4 +1,4 @@
-extends ScrollContainer
+extends Control
 
 export(PackedScene) var shipGUICard
 export (NodePath) var ship_List
@@ -11,7 +11,7 @@ func _ready():
 	for ship in shipList.get_children():
 		var card = shipGUICard.instance() 
 		card.init(ship)
-		$VBoxContainer.add_child(card)
+		$ScrollContainer/VBoxContainer.add_child(card)
 		card.connect("ship_selection_request",self,"on_ship_selection_request")
 		
 func on_ship_selection_request(ship:Ship):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Mission.gd" type="Script" id=2]
@@ -10,9 +10,8 @@
 [ext_resource path="res://General/ShipControlerMouse.gd" type="Script" id=8]
 [ext_resource path="res://General/EndTurnButton.gd" type="Script" id=9]
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
-[ext_resource path="res://ShipGUICard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ShipPannel.tscn" type="PackedScene" id=11]
 [ext_resource path="res://General/MissionDetailsUI.gd" type="Script" id=12]
-[ext_resource path="res://General/ShipPannel.gd" type="Script" id=13]
 [ext_resource path="res://General/DeselectButton.gd" type="Script" id=14]
 [ext_resource path="res://RegionCard.tscn" type="PackedScene" id=15]
 [ext_resource path="res://General/RegionList.gd" type="Script" id=16]
@@ -102,33 +101,17 @@ anchor_mode = 0
 current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
+editor_draw_screen = false
 script = ExtResource( 10 )
 ScreenScrollspeed = 300
 screenScrollDistance = 30
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
-[node name="ShipPannel" type="ScrollContainer" parent="GUILayer"]
-anchor_bottom = 1.0
-margin_top = 115.0
-margin_right = 200.0
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_group_": true
-}
-shipGUICard = ExtResource( 11 )
-ship_List = NodePath("../../World/Components/ShipComp/ShipList")
-_shipComp = NodePath("../../World/Components/ShipComp")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/ShipPannel"]
-margin_right = 200.0
-margin_bottom = 485.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 2
+[node name="ShipPannel" parent="GUILayer" instance=ExtResource( 11 )]
 
 [node name="MissionList" parent="GUILayer" instance=ExtResource( 5 )]
-margin_bottom = -12.0
+margin_bottom = -50.0
 _MissionList = NodePath("../../World/Components/MissionComp/MissionList")
 
 [node name="MissionDetails" type="Control" parent="GUILayer/MissionList"]
@@ -178,10 +161,11 @@ autowrap = true
 
 [node name="EndTurnButton" type="Button" parent="GUILayer"]
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = -145.0
-margin_right = -45.0
-margin_bottom = 50.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -50.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Engage!"
