@@ -2,11 +2,10 @@ extends Panel
 
 func populate(region:Region):
 	var compSegments = region.map_components(funcref(self,"get_region_comp_large_tray_segment"))
-	for old_seg in self.get_children():
-		self.remove_child(old_seg)
-		old_seg.queue_free()
+	for old_seg in $HBoxContainer.get_children():
+		$HBoxContainer.remove_child(old_seg)
 	for seg in compSegments:
-		self.add_child(seg)
+		$HBoxContainer.add_child(seg)
 
 	
 func get_region_comp_large_tray_segment(comp):

@@ -1,5 +1,5 @@
 extends RegComp
 
-var value
+var value = 100
 
 var incidents : Array

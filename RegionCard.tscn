@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://General/ShipCommandGameTiles.png" type="Texture" id=1]
 [ext_resource path="res://RegionCard.gd" type="Script" id=2]
@@ -8,6 +8,11 @@
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 192, 64, 64 )
 
 [node name="RegionCard" type="TextureButton"]
 margin_right = 100.0
@@ -40,3 +45,10 @@ script = ExtResource( 3 )
 [node name="VBoxContainer" type="VBoxContainer" parent="Tray"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="HightlightTexture" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 3 )
+expand = true

@@ -4,6 +4,12 @@ export(Texture) var baseTexture
 
 var my_region
 
+func _enter_tree():
+	GameState.connect("selection_Changed",self,"_on_selection_changed")
+	
+func _exit_tree():
+	GameState.deconnect("selection_Changed",self,"_on_selection_changed")
+
 func init(region:Region):
 	my_region = region
 	$NameLabel.text = region.name
@@ -29,3 +35,9 @@ func _on_mouse_entered():
 	
 func _on_mouse_exited():
 	$Tray.visible = false
+	
+func _on_selection_changed():
+	if GameState.selection == my_region:
+		$HightlightTexture.visible = true
+	else:
+		$HightlightTexture.visible = false

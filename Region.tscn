@@ -1,28 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://General/Regions/Region.gd" type="Script" id=1]
 [ext_resource path="res://General/Regions/Components/Econemy/EconemyRegComp.gd" type="Script" id=2]
-[ext_resource path="res://EconemySmallSegment.tscn" type="PackedScene" id=3]
-[ext_resource path="res://RegCompSafety.gd" type="Script" id=4]
-[ext_resource path="res://RegCompExploration.gd" type="Script" id=5]
-[ext_resource path="res://RegCompExplorationMissionGen.gd" type="Script" id=6]
+[ext_resource path="res://RegionComponents/ExplorationComp/ExplorationSmallSegment.tscn" type="PackedScene" id=3]
+[ext_resource path="res://RegionComponents/SaftyComp/RegCompSafety.gd" type="Script" id=4]
+[ext_resource path="res://RegionComponents/ExplorationComp/RegCompExploration.gd" type="Script" id=5]
+[ext_resource path="res://RegionComponents/ExplorationComp/RegCompExplorationMissionGen.gd" type="Script" id=6]
 [ext_resource path="res://Components/Missions/Types/Anomaly/AnomalyMission.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/Missions/Types/Exploration/ExplorationMission.tscn" type="PackedScene" id=8]
+[ext_resource path="res://RegionComponents/EconemyComp/EconemySmallSegment.tscn" type="PackedScene" id=9]
+[ext_resource path="res://RegionComponents/SaftyComp/SaftyLargeSegment.tscn" type="PackedScene" id=10]
+[ext_resource path="res://RegionComponents/SaftyComp/SaftySmallSegment.tscn" type="PackedScene" id=11]
+[ext_resource path="res://RegionComponents/ExplorationComp/ExplorationLargeSegment.tscn" type="PackedScene" id=12]
+[ext_resource path="res://RegionComponents/EconemyComp/EconemyLargeSegment.tscn" type="PackedScene" id=13]
 
 [node name="Region" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Econemy" type="Node" parent="."]
 script = ExtResource( 2 )
-smallTraySegment = ExtResource( 3 )
+_smallTraySegment = ExtResource( 9 )
+_largeTraySegment = ExtResource( 13 )
 
 [node name="Safety" type="Node" parent="."]
 script = ExtResource( 4 )
-smallTraySegment = ExtResource( 3 )
+_smallTraySegment = ExtResource( 11 )
+_largeTraySegment = ExtResource( 12 )
 
 [node name="Exploration" type="Node" parent="."]
 script = ExtResource( 5 )
-smallTraySegment = ExtResource( 3 )
+_smallTraySegment = ExtResource( 3 )
+_largeTraySegment = ExtResource( 10 )
 
 [node name="ExplorationMissionGen" type="Node" parent="Exploration"]
 script = ExtResource( 6 )
