@@ -8,9 +8,6 @@ signal MissionTimedOut()
 
 export var time_limit = 3
 
-export(Resource) var effect_completed = null
-export(Resource) var effect_failed = null
-export(Resource) var effect_ongoing = null
 export(String, MULTILINE) var Description = ""
 
 export(int) var icon_index = 0
@@ -24,14 +21,27 @@ func _enter_tree():
 func _exit_tree():
 	GameState.disconnect("time_progressed",self,"on_time_progress")
 
+func _ongoing_start_effect():
+	pass
+
+func _ongoing_effect(amount):
+	pass
+	
+func _ongoing_end_effect():
+	pass
+
+func _complete_effect():
+	pass
+	
+func _timeout_effect():
+	pass
+
 func init(region):
 	self.region = region
-	if effect_ongoing != null:
-		effect_ongoing.start(self)
+	_ongoing_start_effect()
 
 func on_time_progress(amount):
-	if effect_ongoing != null:
-		effect_ongoing.trigger_ongoing(self,amount)
+	_ongoing_effect(amount)
 	if _completed == true:
 		return
 	
@@ -41,23 +51,20 @@ func on_time_progress(amount):
 			time_out()
 
 func time_out():
-	if effect_failed != null:
-		effect_failed.trigger(self)
+	_timeout_effect()
 	_remove_mission()
 	emit_signal("MissionTimedOut",self)
 
 
 func complete():
 	_completed = true
-	if effect_completed != null:
-		effect_completed.trigger(self)
+	_complete_effect()
 	_remove_mission()
 	emit_signal("MissionComplete",self)
 
 
 func _remove_mission():
-	if effect_ongoing != null:
-		effect_ongoing.end(self)
+	_ongoing_end_effect()
 	$"../".remove_child(self)
 	queue_free()
 

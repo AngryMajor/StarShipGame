@@ -35,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://General/Effects/Print/PrintRegionEffect.gd"
 }, {
 "base": "Node",
+"class": "RegComp",
+"language": "GDScript",
+"path": "res://RegionComponents/RegComp.gd"
+}, {
+"base": "Node",
 "class": "Region",
 "language": "GDScript",
 "path": "res://General/Regions/Region.gd"
@@ -65,6 +70,7 @@ _global_script_class_icons={
 "MissionComp": "",
 "PrintMissionEffect": "",
 "PrintRegionEffect": "",
+"RegComp": "",
 "Region": "",
 "RegionMap": "",
 "Ship": "",

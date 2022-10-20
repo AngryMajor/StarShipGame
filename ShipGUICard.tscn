@@ -43,7 +43,7 @@ region = Rect2( 448, 64, 64, 64 )
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-size_flags_vertical = 3
+size_flags_horizontal = 3
 script = ExtResource( 2 )
 baseTexture = ExtResource( 1 )
 

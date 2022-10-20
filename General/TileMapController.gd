@@ -4,6 +4,8 @@ onready var worldControler = GameState.world
 
 var lableDict = {}
 
+var theme = preload("res://General/MaineTheme.tres")
+
 func render_tiles():
 	worldControler.map_coords(funcref(self,"render_tile"))
 
@@ -44,7 +46,7 @@ func process_tile_data(visual_data_array) -> Dictionary:
 
 func create_text_box(string:String, coord):
 	if coord in lableDict:
-		lableDict[coord].text = string
+		lableDict[coord].text = string.to_upper()
 	else:
 		var world_coords = worldControler.convert_map_to_world_coors(coord)
 		var newLabel = Label.new() as Label
@@ -53,7 +55,8 @@ func create_text_box(string:String, coord):
 		newLabel.valign = Label.VALIGN_BOTTOM
 		newLabel.align = Label.ALIGN_CENTER
 		newLabel.autowrap = true
-		newLabel.text = string
+		newLabel.text = string.to_upper()
+		newLabel.theme = theme
 		$Lables.add_child(newLabel)
 		
 		lableDict[coord] = newLabel

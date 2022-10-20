@@ -12,8 +12,8 @@ func _ready():
 	missionComp.connect("data_updated",self,"updated_mission_lists")
 		
 func updated_mission_lists(coord):
-	for child in $VBoxContainer.get_children():
-		$VBoxContainer.remove_child(child)
+	for child in $ScrollContainer/VBoxContainer.get_children():
+		$ScrollContainer/VBoxContainer.remove_child(child)
 		child.queue_free()
 	
 	for mission in missionList.get_children():
@@ -22,4 +22,4 @@ func updated_mission_lists(coord):
 func add_mission(mission):
 		var card = missionCard.instance()
 		card.init(mission)
-		$VBoxContainer.add_child(card)
+		$ScrollContainer/VBoxContainer.add_child(card)

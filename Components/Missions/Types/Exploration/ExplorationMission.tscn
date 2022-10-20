@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/Missions/Types/Exploration/ExplorationMission.gd" type="Script" id=1]
+
+[node name="Exploration Mission" type="Node"]
+script = ExtResource( 1 )
+time_limit = -1
+icon_index = 2
