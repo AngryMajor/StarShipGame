@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+
+func init(region):
+	.init(region)
+	self.name = \"Build Relays\"
+	
+func _ongoing_start_effect():
+	pass
+
+func _ongoing_effect(amount):
+	pass
+	
+func _ongoing_end_effect():
+	pass
+
+func _complete_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev += 5
+	region.get_component(\"DevelopmentComp\").progressDev += 5
+	region.get_component(\"DevelopmentComp\").NatureDev += 5
+	
+func _timeout_effect():
+	pass"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+time_limit = -1
+Description = "This sector is in dire need for more communication relays to be built.
+
+Completing this mission will improve development by 5 accross the boardin this sector."

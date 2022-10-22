@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+func init(region):
+	.init(region)
+	self.name = \"Pirote Crackdown\"
+	
+func _ongoing_start_effect():
+	pass
+
+func _ongoing_effect(amount):
+	region.get_component(\"DevelopmentComp\").peopleDev += 1
+	
+func _ongoing_end_effect():
+	pass
+
+func _complete_effect():
+	pass
+	
+func _timeout_effect():
+	pass"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+time_limit = -1
+Description = "A group of pirotes have started working in this sector, if not delt with they could cause significante economic damage.
+
+Until this mission is completed progress development will be decreased by 1"

@@ -3,8 +3,8 @@ class_name WorldController
 
 onready var TILE_SIZE = $TileMaps/Main.cell_size.x
 
-const MAP_SIZE_X = 64
-const MAP_SIZE_Y = 64
+const MAP_SIZE_X = 16
+const MAP_SIZE_Y = 14
 
 const NORTH = Vector2(1,0)
 const EAST =  Vector2(0,1)
@@ -27,6 +27,7 @@ func _ready():
 func _set_up_children():
 	for component in $Components.get_children():
 		component.connect("data_updated",self,"on_tile_data_updated")
+
 
 func on_tile_data_updated(coord):
 	$TileMaps.render_tile(coord)

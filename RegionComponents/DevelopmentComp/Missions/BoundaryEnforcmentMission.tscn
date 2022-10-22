@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+func init(region):
+	.init(region)
+	self.name = \"Boundary Enfraction\"
+	
+func _ongoing_start_effect():
+	pass
+
+func _ongoing_effect(amount):
+	region.get_component(\"DevelopmentComp\").NatureDev -= 1
+	
+func _ongoing_end_effect():
+	pass
+
+func _complete_effect():
+	pass
+	
+func _timeout_effect():
+	pass"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+time_limit = -1
+Description = "A group of Potchers have started breaking into a nature praserve for profit. Unless we stop them then will degraded peoples respect for nature.
+
+Every turn this mission has not been completed the nature development of this sector will decrease by 1."

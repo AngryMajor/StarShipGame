@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+func init(region):
+	.init(region)
+	self.name = \"Medical Aid\"
+	
+func _ongoing_start_effect():
+	pass
+
+func _ongoing_effect(amount):
+	pass
+	
+func _ongoing_end_effect():
+	pass
+
+func _complete_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev += 10
+	
+func _timeout_effect():
+	region.get_component(\"DevelopmentComp\").progressDev += 3
+
+"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+time_limit = 5
+Description = "A Coloney in this sector has requested medical aid. If we give this aid we can help hundreds of people, however if we leave it to local markets to solve we could make progres in medical sciences
+
+completing this mission will improve people development by 10. If the mission times out progress development will advance by 3"
+icon_index = 1

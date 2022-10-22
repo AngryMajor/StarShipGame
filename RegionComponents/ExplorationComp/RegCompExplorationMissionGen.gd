@@ -10,7 +10,7 @@ var explorationMission :Node = null
 export(PackedScene) var AnomalyMission_scene
 
 
-var anomalyChance = 10
+export(int) var anomalyChance = 10
 
 func _enter_tree():
 	GameState.connect("time_progressed",self,"_on_time_progressed")

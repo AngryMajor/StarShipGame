@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+func init(region):
+	.init(region)
+	self.name = \"Calamaty\"
+	
+func _ongoing_start_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev -= 5
+	region.get_component(\"DevelopmentComp\").progressDev -= 5 
+	region.get_component(\"DevelopmentComp\").NatureDev -= 5
+
+func _ongoing_effect(amount):
+	pass
+	
+func _ongoing_end_effect():
+	pass
+
+func _complete_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev += 2
+	region.get_component(\"DevelopmentComp\").progressDev += 2
+	region.get_component(\"DevelopmentComp\").NatureDev += 2
+	
+func _timeout_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev -= 5
+	region.get_component(\"DevelopmentComp\").progressDev -= 5 
+	region.get_component(\"DevelopmentComp\").NatureDev -= 5
+"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+time_limit = 1
+Description = "There has been a calamaty on one of our colonies! We must render assistance at once or thousands of lives may be lost.
+
+The Calamity has lost us development in all catagories but if we can complete this mission this turn the damage can be mitagated."

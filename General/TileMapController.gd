@@ -38,6 +38,8 @@ func process_tile_data(visual_data_array) -> Dictionary:
 		if data != null:
 			if "Mission" in data and data["Mission"] != null:
 				returnDict["Main"] = 10 + data["Mission"].icon_index
+				if data["Mission"].time_limit >= 0:
+					returnDict["Numbers"] = data["Mission"].time_limit
 			if "Ship" in data and data["Ship"] != null:
 				returnDict["Main"] = 15
 			if "Selected" in data and data["Selected"] != null:
@@ -52,7 +54,7 @@ func create_text_box(string:String, coord):
 		var newLabel = Label.new() as Label
 		newLabel.set_position(world_coords)
 		newLabel.rect_size = Vector2(worldControler.TILE_SIZE,worldControler.TILE_SIZE)
-		newLabel.valign = Label.VALIGN_BOTTOM
+		newLabel.valign = Label.VALIGN_TOP
 		newLabel.align = Label.ALIGN_CENTER
 		newLabel.autowrap = true
 		newLabel.text = string.to_upper()

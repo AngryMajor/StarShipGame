@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+func init(region):
+	.init(region)
+	self.name = \"Law Enforcment\"
+	
+func _ongoing_start_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev -= 5
+	region.get_component(\"DevelopmentComp\").progressDev -= 5
+	region.get_component(\"DevelopmentComp\").NatureDev -= 5
+
+func _ongoing_effect(amount):
+	pass
+	
+func _ongoing_end_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev += 5
+	region.get_component(\"DevelopmentComp\").progressDev += 5
+	region.get_component(\"DevelopmentComp\").NatureDev += 5
+
+func _complete_effect():
+	pass
+	
+func _timeout_effect():
+	pass
+"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+time_limit = -1
+Description = "Criminals in this area are starting to get out of hand, until we get an handel on the siduation there will be a reduction in peoples quality of life.
+
+Until this mission is completed there will be a reduction of all development types by 5"

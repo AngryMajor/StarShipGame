@@ -4,22 +4,22 @@
 [ext_resource path="res://Components/Missions/Mission.gd" type="Script" id=2]
 [ext_resource path="res://MouseController/MouseStates/DefaultState.gd" type="Script" id=3]
 [ext_resource path="res://General/Regions/Components/Econemy/Effects/DipEconomicEffect.gd" type="Script" id=4]
-[ext_resource path="res://MissionListUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/MissionPannel/MissionListUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://General/ShipCommandGameTiles.png" type="Texture" id=6]
 [ext_resource path="res://General/Regions/Components/Econemy/Effects/BonusEconomicEffect.gd" type="Script" id=7]
 [ext_resource path="res://General/ShipControlerMouse.gd" type="Script" id=8]
 [ext_resource path="res://General/EndTurnButton.gd" type="Script" id=9]
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
-[ext_resource path="res://ShipPannel.tscn" type="PackedScene" id=11]
-[ext_resource path="res://General/MissionDetailsUI.gd" type="Script" id=12]
+[ext_resource path="res://GUI/ShipSelectionPannel/ShipPannel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://GUI/MissionPannel/MissionDetailsUI.gd" type="Script" id=12]
 [ext_resource path="res://General/DeselectButton.gd" type="Script" id=14]
-[ext_resource path="res://RegionCard.tscn" type="PackedScene" id=15]
-[ext_resource path="res://General/RegionList.gd" type="Script" id=16]
+[ext_resource path="res://GUI/RegionPannel/RegionCard.tscn" type="PackedScene" id=15]
+[ext_resource path="res://GUI/RegionPannel/RegionList.gd" type="Script" id=16]
 [ext_resource path="res://MouseController/MouseStates/RegionInspect.gd" type="Script" id=17]
 [ext_resource path="res://MouseController/MouseStates/TestState.gd" type="Script" id=18]
 [ext_resource path="res://MouseController/MouseStates/MisssionInspector.gd" type="Script" id=19]
 [ext_resource path="res://MouseController/MouseControler.gd" type="Script" id=20]
-[ext_resource path="res://General/BigRegionTray.gd" type="Script" id=21]
+[ext_resource path="res://GUI/RegionPannel/BigRegionTray.gd" type="Script" id=21]
 [ext_resource path="res://General/Regions/Components/Econemy/Effects/NegEconomicEffect.gd" type="Script" id=22]
 
 [sub_resource type="PackedScene" id=2]
@@ -92,13 +92,49 @@ script = ExtResource( 18 )
 
 [node name="World" parent="." instance=ExtResource( 1 )]
 
+[node name="DevelopmentComp" parent="World/RegionsMap/RegionList/Region1" index="0"]
+peopleDev = 33
+progressDev = 33
+NatureDev = 33
+
+[node name="DevelopmentMissionGen" parent="World/RegionsMap/RegionList/Region1/DevelopmentComp" index="0"]
+eventChance = 66
+
+[node name="DevelopmentMissionGen" parent="World/RegionsMap/RegionList/Region2/DevelopmentComp" index="0"]
+eventChance = 50
+
+[node name="DevelopmentMissionGen" parent="World/RegionsMap/RegionList/Region3/DevelopmentComp" index="0"]
+eventChance = 40
+
+[node name="DevelopmentMissionGen" parent="World/RegionsMap/RegionList/Region4/DevelopmentComp" index="0"]
+eventChance = 0
+
+[node name="DevelopmentMissionGen" parent="World/RegionsMap/RegionList/Region5/DevelopmentComp" index="0"]
+eventChance = 0
+
+[node name="DevelopmentMissionGen" parent="World/RegionsMap/RegionList/Region6/DevelopmentComp" index="0"]
+eventChance = 0
+
 [node name="MissionGenerator" parent="World/Components/MissionComp" index="1"]
 mission_to_generate = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
+
+[node name="Excalaber" parent="World/Components/ShipComp/ShipList" index="0"]
+baseAP = 1
+currAP = 1
+
+[node name="Excalaber2" parent="World/Components/ShipComp/ShipList" index="1"]
+baseAP = 1
+currAP = 1
+
+[node name="Excalaber3" parent="World/Components/ShipComp/ShipList" index="2"]
+baseAP = 1
+currAP = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -132, 315 )
 anchor_mode = 0
 current = true
+zoom = Vector2( 0.7, 0.7 )
 smoothing_enabled = true
 smoothing_speed = 10.0
 editor_draw_screen = false
@@ -198,3 +234,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [editable path="World"]
+[editable path="World/RegionsMap/RegionList/Region1"]
+[editable path="World/RegionsMap/RegionList/Region2"]
+[editable path="World/RegionsMap/RegionList/Region3"]
+[editable path="World/RegionsMap/RegionList/Region4"]
+[editable path="World/RegionsMap/RegionList/Region5"]
+[editable path="World/RegionsMap/RegionList/Region6"]

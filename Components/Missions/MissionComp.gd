@@ -56,13 +56,18 @@ func add_mission(regionID:int, missionNode):
 		$MissionList.add_child(missionNode)
 		mission_map[coord] = missionNode
 		
-		missionNode.connect("MissionComplete",self,"_mission_freeing",[coord])
-		missionNode.connect("MissionTimedOut",self,"_mission_freeing",[coord])
+		missionNode.connect("DataUpdated",self,"_mission_updated",[coord])
 		
 		emit_signal("data_updated",coord)
 		
+		
+func _mission_updated(mission:Mission,coord):
+	if mission.get_parent() == null:
+		_mission_freeing(mission,coord)
+	emit_signal("data_updated",coord)
+	
 func _mission_freeing(mission:Mission,coord):
 	mission_map.erase(coord)
 	mission.region.release_reserved_coord(coord)
-	emit_signal("data_updated",coord)
+
 	

@@ -8,7 +8,7 @@ func _enter_tree():
 	GameState.connect("selection_Changed",self,"_on_selection_changed")
 	
 func _exit_tree():
-	GameState.deconnect("selection_Changed",self,"_on_selection_changed")
+	GameState.disconnect("selection_Changed",self,"_on_selection_changed")
 
 func init(region:Region):
 	my_region = region

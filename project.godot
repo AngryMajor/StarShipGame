@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Resource",
-"class": "BaseEffect",
-"language": "GDScript",
-"path": "res://General/Effects/BaseEffect.gd"
-}, {
 "base": "Node",
 "class": "Mission",
 "language": "GDScript",
@@ -23,16 +18,6 @@ _global_script_classes=[ {
 "class": "MissionComp",
 "language": "GDScript",
 "path": "res://Components/Missions/MissionComp.gd"
-}, {
-"base": "BaseEffect",
-"class": "PrintMissionEffect",
-"language": "GDScript",
-"path": "res://General/Effects/Print/PrintMissionEffect.gd"
-}, {
-"base": "BaseEffect",
-"class": "PrintRegionEffect",
-"language": "GDScript",
-"path": "res://General/Effects/Print/PrintRegionEffect.gd"
 }, {
 "base": "Node",
 "class": "RegComp",
@@ -65,11 +50,8 @@ _global_script_classes=[ {
 "path": "res://General/WorldController.gd"
 } ]
 _global_script_class_icons={
-"BaseEffect": "",
 "Mission": "",
 "MissionComp": "",
-"PrintMissionEffect": "",
-"PrintRegionEffect": "",
 "RegComp": "",
 "Region": "",
 "RegionMap": "",
@@ -88,10 +70,6 @@ config/icon="res://General/icon.png"
 [autoload]
 
 GameState="*res://General/GameState.gd"
-
-[display]
-
-window/vsync/use_vsync=false
 
 [global]
 

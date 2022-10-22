@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+func init(region):
+	.init(region)
+	self.name = \"Nature Survey\"
+	
+func _ongoing_start_effect():
+	pass
+
+func _ongoing_effect(amount):
+	pass
+	
+func _ongoing_end_effect():
+	pass
+
+func _complete_effect():
+	region.get_component(\"DevelopmentComp\").progressDev += 10
+	
+func _timeout_effect():
+	region.get_component(\"DevelopmentComp\").progressDev += 3
+	region.get_component(\"DevelopmentComp\").NatureDev += 7
+"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+Description = "During development of a planet we have uncovered an interesting natural anomaly that deserves studying. if we hold off on development for a while we could gain some valuable knoladge, though at the cost of rapid development.
+
+completing this mission will stop the survey, yeilding 10 progress development. letting the mission time out will yeild 7 natural development and 3 progress development"
+icon_index = 1

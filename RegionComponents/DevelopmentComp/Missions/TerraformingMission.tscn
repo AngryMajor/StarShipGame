@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+func init(region):
+	.init(region)
+	self.name = \"Terraforming\"
+	
+func _ongoing_start_effect():
+	pass
+
+func _ongoing_effect(amount):
+	pass
+	
+func _ongoing_end_effect():
+	pass
+
+func _complete_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev += 10
+	region.get_component(\"DevelopmentComp\").NatureDev -= 5
+	
+func _timeout_effect():
+	region.get_component(\"DevelopmentComp\").peopleDev -= 5
+	region.get_component(\"DevelopmentComp\").NatureDev += 5
+"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )
+time_limit = 5
+Description = "A world in this system is rype for terraforming, however this will negativly effect the already existing ecology.
+
+completion of this mission will yeild 10 people development but loose 5 nature development. letting this mission time out will yeild 5 nature development but loose 5 people development."
+icon_index = 1
