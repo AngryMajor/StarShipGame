@@ -25,7 +25,10 @@ func _unhandled_input(event):
 		event_dict["button"] = event.button_index
 		
 		CurrMosueState.handel_input(event_dict)
-
+		
+	if event is InputEventKey and event.is_pressed() and event.scancode == KEY_ESCAPE:
+		GameState.selection = null
+		
 func _set_mouse_state(stateName:String):
 	if stateName == null:
 		return

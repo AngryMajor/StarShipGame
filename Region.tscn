@@ -1,18 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://General/Regions/Region.gd" type="Script" id=1]
-[ext_resource path="res://RegionComponents/DevelopmentComp/RegCompDevelopmentMissionGen.gd" type="Script" id=2]
-[ext_resource path="res://RegionComponents/DevelopmentComp/RegCompDevelopment.gd" type="Script" id=4]
-[ext_resource path="res://RegionComponents/DevelopmentComp/DevelopmentLargeSegment.tscn" type="PackedScene" id=9]
-[ext_resource path="res://RegionComponents/DevelopmentComp/DevelopmentSmallSegment.tscn" type="PackedScene" id=11]
 
 [node name="Region" type="Node"]
 script = ExtResource( 1 )
-
-[node name="DevelopmentComp" type="Node" parent="."]
-script = ExtResource( 4 )
-_smallTraySegment = ExtResource( 11 )
-_largeTraySegment = ExtResource( 9 )
-
-[node name="DevelopmentMissionGen" type="Node" parent="DevelopmentComp"]
-script = ExtResource( 2 )

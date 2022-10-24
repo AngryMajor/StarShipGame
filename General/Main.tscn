@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Mission.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
 [ext_resource path="res://GUI/ShipSelectionPannel/ShipPannel.tscn" type="PackedScene" id=11]
 [ext_resource path="res://GUI/MissionPannel/MissionDetailsUI.gd" type="Script" id=12]
+[ext_resource path="res://General/ResourceDisplay.gd" type="Script" id=13]
 [ext_resource path="res://General/DeselectButton.gd" type="Script" id=14]
 [ext_resource path="res://GUI/RegionPannel/RegionCard.tscn" type="PackedScene" id=15]
 [ext_resource path="res://GUI/RegionPannel/RegionList.gd" type="Script" id=16]
@@ -207,21 +208,22 @@ enabled_focus_mode = 0
 text = "Engage!"
 script = ExtResource( 9 )
 
-[node name="RegionList" type="Panel" parent="GUILayer"]
+[node name="RegionPanel" type="Panel" parent="GUILayer"]
 anchor_right = 1.0
 margin_left = 10.0
+margin_top = 24.0
 margin_right = -210.0
-margin_bottom = 34.0
+margin_bottom = 58.0
 rect_min_size = Vector2( 0, 20 )
 script = ExtResource( 16 )
 _regionList = NodePath("../../World/RegionsMap/RegionList")
 _regionCard = ExtResource( 15 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/RegionList"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/RegionPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="BigRegionTray" type="Panel" parent="GUILayer/RegionList"]
+[node name="BigRegionTray" type="Panel" parent="GUILayer/RegionPanel"]
 visible = false
 anchor_top = 1.0
 anchor_right = 1.0
@@ -229,7 +231,22 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 0, 52 )
 script = ExtResource( 21 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/RegionList/BigRegionTray"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/RegionPanel/BigRegionTray"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ResourceDisplay" type="Control" parent="GUILayer"]
+anchor_right = 1.0
+margin_right = -200.0
+margin_bottom = 24.0
+script = ExtResource( 13 )
+_resourceSys = NodePath("../../World/ResourceSys")
+
+[node name="Panel" type="Panel" parent="GUILayer/ResourceDisplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/ResourceDisplay"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 

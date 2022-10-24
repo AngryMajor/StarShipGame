@@ -32,12 +32,22 @@ _global_script_classes=[ {
 "base": "TileMap",
 "class": "RegionMap",
 "language": "GDScript",
-"path": "res://General/Regions/Regions.gd"
+"path": "res://General/Regions/RegionMap.gd"
+}, {
+"base": "Node",
+"class": "ResourceItem",
+"language": "GDScript",
+"path": "res://ResourceSys/ResourceItem.gd"
 }, {
 "base": "Node",
 "class": "Ship",
 "language": "GDScript",
 "path": "res://General/Ship.gd"
+}, {
+"base": "Node",
+"class": "ShipOrder",
+"language": "GDScript",
+"path": "res://ShipOrder.gd"
 }, {
 "base": "Node",
 "class": "TestState",
@@ -55,7 +65,9 @@ _global_script_class_icons={
 "RegComp": "",
 "Region": "",
 "RegionMap": "",
+"ResourceItem": "",
 "Ship": "",
+"ShipOrder": "",
 "TestState": "",
 "WorldController": ""
 }

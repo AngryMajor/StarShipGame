@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+func init(target:ResourceItem):
+	($HBoxContainer as HBoxContainer)
+	
+	$HBoxContainer/NameLabel.text = target.name
+	$HBoxContainer/AmountLabel.text = String(target._amount)
+	if target._income >= 0:
+		$HBoxContainer/IncomeLabel.text = \"+\" + String(target._income)
+	else:
+				$HBoxContainer/IncomeLabel.text = String(target._income)
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -904.0
+margin_bottom = -568.0
+rect_min_size = Vector2( 120, 0 )
+script = SubResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="NameLabel" type="Label" parent="HBoxContainer"]
+margin_top = 13.0
+margin_right = 52.0
+margin_bottom = 27.0
+text = "asdfasdf"
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer"]
+margin_left = 56.0
+margin_top = 13.0
+margin_right = 72.0
+margin_bottom = 27.0
+text = "12"
+
+[node name="IncomeLabel" type="Label" parent="HBoxContainer"]
+margin_left = 76.0
+margin_top = 13.0
+margin_right = 100.0
+margin_bottom = 27.0
+text = "+12"

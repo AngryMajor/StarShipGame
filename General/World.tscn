@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://General/WorldController.gd" type="Script" id=1]
-[ext_resource path="res://General/Regions/Regions.gd" type="Script" id=2]
+[ext_resource path="res://General/Regions/RegionMap.gd" type="Script" id=2]
 [ext_resource path="res://General/MainTileSet.tres" type="TileSet" id=3]
 [ext_resource path="res://Region.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ResourceSys/ResourceSys.gd" type="Script" id=5]
 [ext_resource path="res://General/TileMapController.gd" type="Script" id=6]
 [ext_resource path="res://Components/Missions/MissionComp.gd" type="Script" id=7]
+[ext_resource path="res://ResourceSys/ResourceItem.gd" type="Script" id=8]
 [ext_resource path="res://Components/Missions/MissionGenerator.gd" type="Script" id=9]
+[ext_resource path="res://ResourceSys/ResourceItemDisplay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Components/ShipComp/ShipComp.gd" type="Script" id=13]
 [ext_resource path="res://Components/ShipComp/Ship.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/HighlightComp/HighlightComp.gd" type="Script" id=15]
@@ -81,3 +84,16 @@ format = 1
 tile_data = PoolIntArray( 1179715, 1, 1, 1179716, 1, 1, 1179717, 1, 1, 1179718, 1, 1, 1179719, 1, 1, 1245256, 1, 1, 1245257, 1, 1, 1245258, 1, 1, 1245259, 1, 1, 1245260, 1, 1, 1245261, 1, 1, 1245262, 1, 1, 1245263, 1, 1, 1245264, 1, 1, 1245265, 1, 1, 1245266, 1, 1, 1245267, 1, 1, 1310804, 1, 1 )
 
 [node name="Lables" type="Node" parent="TileMaps"]
+
+[node name="ResourceSys" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Energy" type="Node" parent="ResourceSys"]
+script = ExtResource( 8 )
+resourceItemDisplay = ExtResource( 10 )
+_amount = 12
+
+[node name="Materials" type="Node" parent="ResourceSys"]
+script = ExtResource( 8 )
+resourceItemDisplay = ExtResource( 10 )
+_amount = 15

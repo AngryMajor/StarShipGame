@@ -13,9 +13,13 @@ const WEST =  Vector2(0,-1)
 const DIRECTIONS = [NORTH,EAST,SOUTH,WEST]
 
 var regionMap : RegionMap setget ,get_regions
+var resourceSys : RegionMap setget ,get_resources
 
 func get_regions():
 	return $RegionsMap
+	
+func get_resources():
+	return $ResourceSys
 
 func _enter_tree():
 	GameState.world = self
