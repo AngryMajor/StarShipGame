@@ -96,18 +96,6 @@ script = ExtResource( 18 )
 [node name="MissionGenerator" parent="World/Components/MissionComp" index="1"]
 mission_to_generate = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
 
-[node name="Excalaber" parent="World/Components/ShipComp/ShipList" index="0"]
-baseAP = 1
-currAP = 1
-
-[node name="Excalaber2" parent="World/Components/ShipComp/ShipList" index="1"]
-baseAP = 1
-currAP = 1
-
-[node name="Excalaber3" parent="World/Components/ShipComp/ShipList" index="2"]
-baseAP = 1
-currAP = 1
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -132, 315 )
 anchor_mode = 0

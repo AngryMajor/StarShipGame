@@ -4,12 +4,11 @@ onready var myRegion = $"../../"
 onready var missionComp = GameState.world.get_componnet("MissionComp") as MissionComp
 onready var explorationComp = $"../"
 
-export(PackedScene) var explorationMission_scene
-var explorationMission :Node = null
+export(Array,PackedScene) var explorationMission_scenes
 
-export(PackedScene) var AnomalyMission_scene
+export(Array,PackedScene) var discoveryMission_scenes
 
-export(int) var anomalyChance = 10
+export(int) var discoveryChance = 10
 
 func _enter_tree():
 	GameState.connect("time_progressed",self,"_on_time_progressed")
@@ -17,16 +16,17 @@ func _enter_tree():
 func _exit_tree():
 	GameState.disconnect("time_progressed",self,"_on_time_progressed")
 	
-func _on_time_progressed(amount):
-	if explorationMission == null or is_instance_valid(explorationMission) == false or explorationMission._completed:
-		_create_new_exploration_mission()
-		
-func _create_new_exploration_mission():
-	explorationMission = explorationMission_scene.instance()
+func _ready():
+	call_deferred("create_new_exploration_mission")
+			
+func create_new_exploration_mission():
+	var mission_index = rand_range(0,explorationMission_scenes.size())
+	var explorationMission = explorationMission_scenes[mission_index].instance()
 	explorationMission.init(myRegion)
 	missionComp.add_mission(myRegion.id,explorationMission)
 	
-func generate_anomaly():
-	var anomalyMission = AnomalyMission_scene.instance()
-	anomalyMission.init(myRegion)
-	missionComp.add_mission(myRegion.id,anomalyMission)
+func generate_discovery():
+	var mission_index = rand_range(0,discoveryMission_scenes.size())
+	var discoveryMission = discoveryMission_scenes[mission_index].instance()
+	discoveryMission.init(myRegion)
+	missionComp.add_mission(myRegion.id,discoveryMission)
