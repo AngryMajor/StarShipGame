@@ -7,7 +7,7 @@ onready var explorationComp = $"../"
 export(PackedScene) var explorationMission_scene
 var explorationMission :Node = null
 
-
+export(PackedScene) var AnomalyMission_scene
 
 export(int) var anomalyChance = 10
 
@@ -26,3 +26,7 @@ func _create_new_exploration_mission():
 	explorationMission.init(myRegion)
 	missionComp.add_mission(myRegion.id,explorationMission)
 	
+func generate_anomaly():
+	var anomalyMission = AnomalyMission_scene.instance()
+	anomalyMission.init(myRegion)
+	missionComp.add_mission(myRegion.id,anomalyMission)

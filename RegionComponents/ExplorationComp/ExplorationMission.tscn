@@ -4,7 +4,9 @@
 script/source = "extends Mission
 
 func _complete_effect():
-	self.region.get_component(\"ExplorationComp\").percentComplete += 5
+	var explorationComp = self.region.get_component(\"ExplorationComp\")
+	explorationComp.percentComplete += 5
+	explorationComp.check_for_anomaly()
 "
 
 [node name="Explore" type="Node"]

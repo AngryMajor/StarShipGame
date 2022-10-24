@@ -52,7 +52,6 @@ func add_mission(regionID:int, missionNode):
 	
 	var coord = targetRegion.request_reserved_coord()
 	if coord != null:
-		missionNode.init(targetRegion)
 		$MissionList.add_child(missionNode)
 		mission_map[coord] = missionNode
 		
