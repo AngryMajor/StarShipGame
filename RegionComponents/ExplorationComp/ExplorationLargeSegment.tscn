@@ -4,7 +4,7 @@
 script/source = "extends Control
 
 func init(comp):
-	$HBoxContainer/EconemyValue.text = String(comp.value)
+	$HBoxContainer/ExplorationValue.text = String(comp.percentComplete)
 "
 
 [node name="EconemySmallSegment" type="Control"]
@@ -19,12 +19,12 @@ anchor_bottom = 1.0
 margin_left = 3.0
 margin_right = -3.0
 
-[node name="EconemyLable" type="Label" parent="HBoxContainer"]
+[node name="ExplorationLable" type="Label" parent="HBoxContainer"]
 margin_right = 91.0
 margin_bottom = 14.0
 text = "Exploration %:"
 
-[node name="EconemyValue" type="Label" parent="HBoxContainer"]
+[node name="ExplorationValue" type="Label" parent="HBoxContainer"]
 margin_left = 95.0
 margin_right = 95.0
 margin_bottom = 14.0
