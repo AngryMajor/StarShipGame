@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://Components/Missions/MissionComp.gd"
 }, {
 "base": "Node",
+"class": "MutiMissionStage",
+"language": "GDScript",
+"path": "res://Components/Missions/MultiMissionStage.gd"
+}, {
+"base": "Node",
 "class": "RegComp",
 "language": "GDScript",
 "path": "res://RegionComponents/RegComp.gd"
@@ -62,6 +67,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Mission": "",
 "MissionComp": "",
+"MutiMissionStage": "",
 "RegComp": "",
 "Region": "",
 "RegionMap": "",

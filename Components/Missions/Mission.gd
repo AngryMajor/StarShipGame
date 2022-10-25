@@ -8,16 +8,32 @@ signal MissionTimedOut()
 signal MissionToRemove()
 signal DataUpdated()
 
-export var time_limit = 3
-
-export(String, MULTILINE) var Description = ""
-
-export(int) var icon_index = 0
+export var time_limit = 3 setget set_time_limit,get_time_limit
+export(String, MULTILINE) var Description = "" setget set_description,get_description
+export(int) var icon_index = 0 setget set_icon_index,get_icon_index
 
 onready var region_id = get_parent().get_index()
-var _completed = false
+var _completed = false setget set_completed, get_completed
 
 
+func set_time_limit(amount):
+	time_limit = amount
+func get_time_limit():
+	return time_limit
+func set_description(value):
+	Description = value
+func get_description():
+	return Description
+func set_icon_index(value):
+	icon_index = value
+func get_icon_index():
+	return icon_index
+func set_completed(value):
+	_completed = value
+func get_completed():
+	return _completed
+	
+	
 func _enter_tree():
 	GameState.connect("time_progressed",self,"on_time_progress")
 
