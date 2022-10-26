@@ -2,6 +2,7 @@ extends MissionExecutor
 class_name Ship
 
 signal RequestToMoveTo(region)
+signal Destroyed()
 
 signal DataUpdated
 
@@ -72,4 +73,11 @@ func set_destination(destination:Region):
 
 func _move_to(region):
 	emit_signal("RequestToMoveTo",region)
+	emit_signal("DataUpdated")
+	
+func destroy():
+	self.queue_free()
+	if self.region != null:
+		self.region.get_component("ShipManager").ship_leave(self)
+	emit_signal("Destroyed")
 	emit_signal("DataUpdated")

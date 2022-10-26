@@ -35,6 +35,11 @@ func add_ship(ship,region):
 		$ShipList.add_child(ship)
 	_put_ship_in_region(ship,region)
 	ship.connect("RequestToMoveTo",self,"_move_ship_to",[ship])
+	ship.connect("Destroyed",self,"_ship_destroyed",[ship])
+
+func _ship_destroyed(ship):
+	ship.disconnect("RequestToMoveTo",self,"_move_ship_to")
+	_remove_ship_from_its_region(ship)
 	
 func _move_ship_to(region:Region,ship:Ship):
 	_remove_ship_from_its_region(ship)
@@ -54,7 +59,7 @@ func _remove_ship_from_its_region(ship):
 		return
 	
 	ship.region.release_reserved_coord(ship_coord)
-	ship_map.erase(ship_coord)	
+	ship_map.erase(ship_coord)
 	emit_signal("data_updated",ship_coord)
 
 func get_ship_coord(ship):	

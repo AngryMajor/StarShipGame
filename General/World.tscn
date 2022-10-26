@@ -27,6 +27,9 @@ script = ExtResource( 2 )
 
 [node name="Region1" parent="RegionsMap/RegionList" instance=ExtResource( 4 )]
 
+[node name="MissionGenerator" parent="RegionsMap/RegionList/Region1/ExplorationComp" index="0"]
+generate_exploration_missions = false
+
 [node name="ShipManager" parent="RegionsMap/RegionList/Region1" index="1"]
 refulingStationActive = true
 
@@ -65,8 +68,6 @@ script = ExtResource( 13 )
 [node name="Excalaber" parent="Components/ShipComp/ShipList" instance=ExtResource( 14 )]
 
 [node name="Excalaber2" parent="Components/ShipComp/ShipList" instance=ExtResource( 14 )]
-
-[node name="Excalaber3" parent="Components/ShipComp/ShipList" instance=ExtResource( 14 )]
 
 [node name="TileMaps" type="Node" parent="."]
 script = ExtResource( 6 )

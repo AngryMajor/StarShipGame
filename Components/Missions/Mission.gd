@@ -69,8 +69,8 @@ func on_time_progress(amount):
 
 func time_out():
 	_completed = true
-	_timeout_effect()
 	icon_index = 4
+	_timeout_effect()
 	emit_signal("DataUpdated",self)
 
 
@@ -79,8 +79,8 @@ func execute(executor:MissionExecutor):
 		return 
 		
 	_completed = true
-	_complete_effect(executor)
 	icon_index = 3
+	_complete_effect(executor)
 	emit_signal("DataUpdated",self)
 
 

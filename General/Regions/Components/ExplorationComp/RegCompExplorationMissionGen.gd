@@ -4,6 +4,8 @@ onready var myRegion = $"../../"
 onready var missionComp = GameState.world.get_componnet("MissionComp") as MissionComp
 onready var explorationComp = $"../"
 
+export(bool) var generate_exploration_missions = true
+
 export(PackedScene) var startMission_scene
 export(Array,PackedScene) var explorationMission_scenes
 export(Array,PackedScene) var discoveryMission_scenes
@@ -11,7 +13,8 @@ export(Array,PackedScene) var discoveryMission_scenes
 export(int) var discoveryChance = 10
 	
 func _ready():
-	call_deferred("_create_start_mission")
+	if generate_exploration_missions:
+		call_deferred("_create_start_mission")
 	
 func _create_start_mission():
 	var explorationMission = startMission_scene.instance()
@@ -19,6 +22,8 @@ func _create_start_mission():
 	missionComp.add_mission(myRegion.id,explorationMission)
 			
 func generate_new_exploration_path(amount:int=1):
+	if generate_exploration_missions == false:
+		return 
 	if amount <= 0:
 		return
 	for i in range(0,amount):

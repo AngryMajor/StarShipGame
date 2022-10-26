@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+func _ongoing_start_effect():
+	print_debug(\"something cool happens here\")
+
+func _complete_effect(executor:MissionExecutor):
+	if executor is Ship:
+		var ship = executor as Ship
+		if ship.currAP > 1:
+			ship.currAP -= 1
+		else:
+			ship.destroy()
+		self.icon_index = 4
+"
+
+[node name="Strange Signal" type="Node"]
+script = SubResource( 1 )
+time_limit = -1

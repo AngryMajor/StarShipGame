@@ -43,11 +43,13 @@ func on_time_progress(amount):
 	if _currState.time_limit > -1:
 		_currState.time_limit -= amount
 		if _currState.time_limit <= 0:
-			_currState.time_out()
+			time_out()
 		emit_signal("DataUpdated",self)
 
 func time_out():
+	_completed = true
 	_currState._timeout_effect()
+	_currState.icon_index = 4
 	emit_signal("DataUpdated",self)
 
 func execute(executor:MissionExecutor):
