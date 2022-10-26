@@ -4,6 +4,9 @@ signal data_updated
 
 var ship_map = {}
 
+func get_hover_box_for(coord:Vector2):
+	pass
+
 func _ready():
 	var region = GameState.world.regionMap.get_region(0)
 	for ship in $ShipList.get_children():

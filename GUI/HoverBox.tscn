@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+func populate(mapCoord:Vector2):
+	var mousePos = get_viewport().get_mouse_position()
+	self.rect_position = mousePos + Vector2(2,2)
+	var world = GameState.world
+	var boxComps :Dictionary= world.map_componnents(\"get_hover_box_for\",[mapCoord])
+	var size_y = 0
+	
+	for child in $VBoxContainer.get_children():
+		$VBoxContainer.remove_child(child)
+	
+	for comp in boxComps.keys():
+		var box :Control = boxComps[comp]
+		if box == null:
+			continue
+		#print_debug(comp)
+		$VBoxContainer.add_child(box)
+		box.resize()
+		size_y += box.rect_size.y
+
+	if size_y > 0:
+		self.rect_size = Vector2(100,size_y+10)
+	else:
+		self.rect_size = Vector2(0,0)
+	#print_debug(self.rect_position,self.rect_size)
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -924.0
+margin_bottom = -600.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = SubResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 5.0
+margin_bottom = 5.0
+mouse_filter = 2

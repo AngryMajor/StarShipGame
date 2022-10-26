@@ -15,6 +15,11 @@ func set_time_limit(amount):
 func get_time_limit():
 	return _currState.time_limit
 
+func set_hover_text(amount):
+	_currState.hover_text = amount
+func get_hover_text():
+	return _currState.hover_text
+
 func set_description(value):
 	_currState.Description = value
 func get_description():

@@ -20,6 +20,9 @@ func _ready():
 	GameState.connect("selection_Changed",self,"on_selection_changed")
 	shipComp.connect("data_updated",self,"on_ship_moved")
 
+func get_hover_box_for(coord:Vector2):
+	pass
+
 func set_curser_highlight(coord):
 	var old_coord = currser_highlight_coords
 	currser_highlight_coords = coord

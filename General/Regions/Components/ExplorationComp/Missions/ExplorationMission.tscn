@@ -19,4 +19,5 @@ func _complete_effect(executor:MissionExecutor):
 [node name="Explore" type="Node"]
 script = SubResource( 1 )
 time_limit = -1
+hover_text = "Search new frontiers"
 icon_index = 2

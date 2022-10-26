@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://General/World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/Missions/Mission.gd" type="Script" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://GUI/MissionPannel/MissionListUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://General/ShipCommandGameTiles.png" type="Texture" id=6]
 [ext_resource path="res://General/Regions/Components/Econemy/Effects/BonusEconomicEffect.gd" type="Script" id=7]
-[ext_resource path="res://General/ShipControlerMouse.gd" type="Script" id=8]
+[ext_resource path="res://General/SelectorControlerMouse.gd" type="Script" id=8]
 [ext_resource path="res://General/EndTurnButton.gd" type="Script" id=9]
 [ext_resource path="res://General/MapCamera.gd" type="Script" id=10]
 [ext_resource path="res://GUI/ShipSelectionPannel/ShipPannel.tscn" type="PackedScene" id=11]
@@ -22,6 +22,7 @@
 [ext_resource path="res://MouseController/MouseControler.gd" type="Script" id=20]
 [ext_resource path="res://GUI/RegionPannel/BigRegionTray.gd" type="Script" id=21]
 [ext_resource path="res://General/Regions/Components/Econemy/Effects/NegEconomicEffect.gd" type="Script" id=22]
+[ext_resource path="res://GUI/HoverBox.tscn" type="PackedScene" id=23]
 
 [sub_resource type="PackedScene" id=2]
 _bundled = {
@@ -75,8 +76,10 @@ region = Rect2( 64, 192, 64, 64 )
 [node name="MouseControler" type="Node2D" parent="."]
 script = ExtResource( 20 )
 _highlightComp = NodePath("../World/Components/HighlightComp")
+timeTillTextbox = 0.2
+hoverBoxScene = ExtResource( 23 )
 
-[node name="ShipControler" type="Node" parent="MouseControler"]
+[node name="SelectorControler" type="Node" parent="MouseControler"]
 script = ExtResource( 8 )
 
 [node name="MisssionInspector" type="Node" parent="MouseControler"]

@@ -7,6 +7,7 @@ signal DataUpdated()
 
 export var time_limit = 3 setget set_time_limit,get_time_limit
 export(String, MULTILINE) var Description = "" setget set_description,get_description
+export(String, MULTILINE) var hover_text = "" setget set_hover_text,get_hover_text
 export(int) var icon_index = 0 setget set_icon_index,get_icon_index
 
 onready var region_id = get_parent().get_index()
@@ -21,6 +22,10 @@ func set_description(value):
 	Description = value
 func get_description():
 	return Description
+func set_hover_text(amount):
+	hover_text = amount
+func get_hover_text():
+	return hover_text
 func set_icon_index(value):
 	icon_index = value
 func get_icon_index():

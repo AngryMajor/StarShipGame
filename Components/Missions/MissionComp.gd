@@ -5,11 +5,20 @@ signal data_updated
 var missionScript = preload("res://Components/Missions/Mission.gd")
 var mission_map = {}
 
+var missionHoverBox = preload("res://GUI/MissionPannel/MissionHoverBox.tscn").instance()
+
 onready var world := GameState.world
 
 func _ready():
 	GameState.connect("time_progressed",self,"_on_time_progressed")
-	
+
+func get_hover_box_for(coord:Vector2):
+	if coord in mission_map:
+		missionHoverBox.populate(mission_map[coord])
+		return missionHoverBox
+	else:
+		return null 
+
 func get_mission_coord(ship):	
 	var keys = mission_map.keys()
 	var i = 0

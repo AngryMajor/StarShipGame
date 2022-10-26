@@ -5,8 +5,38 @@ onready var highlightComp = get_node(_highlightComp)
 
 var CurrMosueState setget _set_mouse_state
 
+var coordUnderMouse
+var timeOverCoord = 0
+export(float) var timeTillTextbox = 1
+var hoverBoxActive = false
+export(PackedScene) var hoverBoxScene : PackedScene
+var hoverBoxInst : Control
+
 func _ready():
 	self.CurrMosueState = get_child(0).name
+
+func _process(delta):
+		if timeOverCoord >= timeTillTextbox:
+			create_hover_box(coordUnderMouse)
+		else:
+			timeOverCoord += delta
+			
+func create_hover_box(coord):
+	if hoverBoxActive == true or coord == null:
+		return
+	hoverBoxActive = true
+	if hoverBoxInst == null:
+		hoverBoxInst = hoverBoxScene.instance()
+		$"../GUILayer".add_child(hoverBoxInst)
+	hoverBoxInst.visible = true
+	hoverBoxInst.populate(coord)
+	
+func close_hover_box():
+	if hoverBoxActive == false:
+		return
+	
+	hoverBoxActive = false
+	hoverBoxInst.visible = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -17,6 +47,11 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		var coord = _map.convert_world_to_map_coors(get_global_mouse_position())
 		highlightComp.currser_highlight_coords = coord
+		if coord != coordUnderMouse:
+			close_hover_box()
+			timeOverCoord = 0
+			coordUnderMouse = coord
+		
 	
 	if event is InputEventMouseButton and event.is_pressed():
 		var event_dict = {}

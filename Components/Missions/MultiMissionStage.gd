@@ -3,6 +3,7 @@ class_name MutiMissionStage
 
 export var time_limit = 3 
 export(String, MULTILINE) var Description = "" 
+export(String, MULTILINE) var hover_text = "" 
 export(int) var icon_index = 0 
 
 onready var region_id = get_parent().get_index()

@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+func populate(mission:Mission):
+	$Label.text = mission.hover_text
+	self.rect_size.y = $Label.get_line_count()#needed to fix bug where box jumps to large size when first created, forces engin to figure out box size before i need it
+	
+func resize():
+	if $Label.text == \"\":
+		self.rect_size.y = 0
+	else:
+		self.rect_size.y = $Label.get_line_count() * ($Label.get_line_height()+2)
+
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -924.0
+margin_bottom = -569.0
+mouse_filter = 2
+size_flags_vertical = 0
+script = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 1
+text = "sadfawedfasdfasdfasdfasdfasdf"
+autowrap = true
