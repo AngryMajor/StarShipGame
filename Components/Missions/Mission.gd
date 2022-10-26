@@ -13,6 +13,7 @@ export(int) var icon_index = 0 setget set_icon_index,get_icon_index
 onready var region_id = get_parent().get_index()
 var _completed = false setget set_completed, get_completed
 
+export(int) var powerCost = 1 setget set_power_cost,get_power_cost
 
 func set_time_limit(amount):
 	time_limit = amount
@@ -34,7 +35,10 @@ func set_completed(value):
 	_completed = value
 func get_completed():
 	return _completed
-	
+func set_power_cost(amount):
+	powerCost = amount
+func get_power_cost():
+	return powerCost
 	
 func _enter_tree():
 	GameState.connect("time_progressed",self,"on_time_progress")
@@ -85,6 +89,7 @@ func execute(executor:MissionExecutor):
 		
 	_completed = true
 	icon_index = 3
+	executor.currPower -= powerCost
 	_complete_effect(executor)
 	emit_signal("DataUpdated",self)
 

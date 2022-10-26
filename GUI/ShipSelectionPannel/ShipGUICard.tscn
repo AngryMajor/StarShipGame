@@ -40,9 +40,9 @@ atlas = ExtResource( 2 )
 region = Rect2( 448, 64, 64, 64 )
 
 [node name="ShipCard" type="Control"]
-margin_right = 100.0
+margin_right = 200.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+rect_min_size = Vector2( 200, 100 )
 size_flags_horizontal = 3
 script = ExtResource( 1 )
 baseTexture = ExtResource( 2 )
@@ -100,19 +100,36 @@ texture = SubResource( 1 )
 expand = true
 stretch_mode = 5
 
-[node name="FuleText" type="Label" parent="."]
+[node name="PowerText" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -54.0
 margin_top = 31.0
 margin_right = -9.0
 margin_bottom = 45.0
-text = "Fule:"
+text = "Pow:"
 
-[node name="FuleLable" type="Label" parent="."]
+[node name="PowerLable" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -24.0
 margin_top = 31.0
 margin_bottom = 45.0
+text = "111"
+
+[node name="HullText" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -54.0
+margin_top = 55.0
+margin_right = -9.0
+margin_bottom = 69.0
+text = "Hull:"
+
+[node name="HullLable" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -24.0
+margin_top = 55.0
+margin_bottom = 69.0
 text = "111"

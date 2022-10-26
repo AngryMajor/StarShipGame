@@ -31,7 +31,8 @@ func on_selection_changed():
 
 func _on_ship_updated():
 	$APLable.text = String(my_ship.currAP)
-	$FuleLable.text = String(my_ship.currFuel)
+	$PowerLable.text = String(my_ship.currPower)
+	$HullLable.text = String(my_ship.currHull)
 	check_ship_available()
 	display_ship_Region()
 

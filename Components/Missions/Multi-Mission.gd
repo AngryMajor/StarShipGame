@@ -29,6 +29,12 @@ func set_icon_index(value):
 	_currState.icon_index = value
 func get_icon_index():
 	return _currState.icon_index
+	
+func set_power_cost(amount):
+	_currState.powerCost = amount
+	
+func get_power_cost():
+	return _currState.powerCost
 
 func init(region):
 	self.region = region
@@ -61,6 +67,7 @@ func execute(executor:MissionExecutor):
 	if _currState._completed == true:
 		return 
 		
+	executor.currPower -= powerCost
 	_currState._complete_effect(executor)
 	emit_signal("DataUpdated",self)
 

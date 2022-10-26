@@ -15,7 +15,7 @@ func _on_post_time_progressed():
 	if refulingStationActive:
 		for s in shipsInRegion:
 			var ship = s as Ship
-			ship.refuel()
+			ship.repower()
 	
 func ship_enter(ship:Ship):
 	shipsInRegion.append(ship)

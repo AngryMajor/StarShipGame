@@ -8,6 +8,7 @@ export(int) var icon_index = 0
 
 onready var region_id = get_parent().get_index()
 var _completed = false
+export(int) var powerCost
 
 signal RequestStateChange(target)
 

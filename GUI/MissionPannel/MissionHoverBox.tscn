@@ -4,6 +4,7 @@
 script/source = "extends Control
 
 func populate(mission:Mission):
+	$Header/PowerCostLable.text = String(mission.powerCost)
 	$Label.text = mission.hover_text
 	self.rect_size.y = $Label.get_line_count()#needed to fix bug where box jumps to large size when first created, forces engin to figure out box size before i need it
 	
@@ -11,7 +12,9 @@ func resize():
 	if $Label.text == \"\":
 		self.rect_size.y = 0
 	else:
-		self.rect_size.y = $Label.get_line_count() * ($Label.get_line_height()+2)
+		var sizeY = $Label.get_line_count() * ($Label.get_line_height()+2)
+		sizeY += $Header.rect_size.y
+		self.rect_size.y = sizeY
 
 "
 
@@ -27,6 +30,25 @@ script = SubResource( 1 )
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 24.0
+margin_bottom = 24.0
 size_flags_vertical = 1
 text = "sadfawedfasdfasdfasdfasdfasdf"
 autowrap = true
+
+[node name="Header" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 24.0
+
+[node name="PowerCostText" type="Label" parent="Header"]
+margin_top = 5.0
+margin_right = 58.0
+margin_bottom = 19.0
+text = "PowCost:"
+
+[node name="PowerCostLable" type="Label" parent="Header"]
+margin_left = 62.0
+margin_top = 5.0
+margin_right = 70.0
+margin_bottom = 19.0
+text = "1"
