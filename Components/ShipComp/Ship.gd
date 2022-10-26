@@ -7,8 +7,8 @@ signal DataUpdated
 
 export(int) var baseAP :int = 2
 export(int) var currAP :int = 2 setget _set_curr_ap
-export(int) var maxFule :int = 2
-var currFule :int = 2 setget _set_curr_fule
+export(int) var maxfuel :int = 3
+var currFuel :int = 3 setget _set_curr_fuel
 
 var route = []
 
@@ -18,8 +18,8 @@ func _set_curr_ap(value):
 	currAP = value
 	emit_signal("DataUpdated")
 
-func _set_curr_fule(value):
-	currFule = value
+func _set_curr_fuel(value):
+	currFuel = value
 	emit_signal("DataUpdated")
 	
 func _enter_tree():
@@ -29,20 +29,23 @@ func _exit_tree():
 	GameState.disconnect("time_progressed",self,"on_time_progressed")
 
 func on_time_progressed(amount:int):
-	if currFule >= baseAP:
-		self.currFule -= self.baseAP - self.currAP
+	var apSpent = self.baseAP - self.currAP
+	if currFuel >= baseAP:
+		self.currFuel -= apSpent
 		self.currAP = self.baseAP
-	elif currFule > 0:
-		self.currAP = self.currFule
-		self.currFule = 0
+	elif currFuel > 0:
+		self.currAP = self.currFuel
+		self.currFuel = 0
 
-func refule():
-	self.currFule = self.maxFule
+func refuel():
+	self.currFuel = self.maxfuel
 	self.currAP = self.baseAP
 
-func init(region):
+func _ready():
+	self.currFuel = self.maxfuel
+
+func init(region):#TODO: shouldn't be init, is called whenever enting new region
 	_enter_region(region)
-	self.currFule = self.maxFule
 	
 func _enter_region(region):
 	if self.region != null:
