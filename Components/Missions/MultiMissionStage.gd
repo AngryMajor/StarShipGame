@@ -19,7 +19,7 @@ func _ongoing_effect(amount):
 func _ongoing_end_effect():
 	pass
 
-func _complete_effect():
+func _complete_effect(executor:MissionExecutor):
 	pass
 	
 func _timeout_effect():

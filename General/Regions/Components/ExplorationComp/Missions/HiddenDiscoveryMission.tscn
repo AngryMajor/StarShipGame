@@ -6,12 +6,9 @@
 script/source = "extends MutiMissionStage
 
 export(NodePath) var nextStage
-
-func _ongoing_start_effect():
-	print_debug(\"stage0\")
 	
 
-func _complete_effect():
+func _complete_effect(executor:MissionExecutor):
 	self._completed = true
 	emit_signal(\"RequestStateChange\",get_node(nextStage))
 "
@@ -19,13 +16,10 @@ func _complete_effect():
 [sub_resource type="GDScript" id=2]
 script/source = "extends MutiMissionStage
 
-func _ongoing_start_effect():
-	print_debug(\"Discovery\")
 	
 
-func _complete_effect():
+func _complete_effect(executor:MissionExecutor):
 	self._completed = true
-	print_debug(\"Discovery\")
 	self.icon_index = 3
 "
 

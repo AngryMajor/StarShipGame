@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Mission
+
+var missionGenerator
+
+func init(region:Region):
+	.init(region)
+	missionGenerator = region.get_component(\"ExplorationComp\").get_node(\"MissionGenerator\")
+
+func _complete_effect(executor:MissionExecutor):
+	var explorationComp = self.region.get_component(\"ExplorationComp\")
+	explorationComp.percentComplete += 5
+	missionGenerator.generate_new_exploration_path(2)
+	missionGenerator.generate_new_discoveries(1)
+"
+
+[node name="Start Exploring" type="Node"]
+script = SubResource( 1 )
+time_limit = -1
+icon_index = 2

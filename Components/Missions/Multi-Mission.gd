@@ -2,6 +2,14 @@ extends Mission
 
 var _currState
 
+func set_currState(value):
+	_currState = value
+func get_currState():
+	if _currState == null:
+		_currState = get_child(0)
+	return _currState
+
+
 func set_time_limit(amount):
 	_currState.time_limit = amount
 func get_time_limit():
@@ -16,10 +24,6 @@ func set_icon_index(value):
 	_currState.icon_index = value
 func get_icon_index():
 	return _currState.icon_index
-
-
-func _ready():
-	_currState = get_child(0)
 
 func init(region):
 	self.region = region
@@ -46,14 +50,14 @@ func time_out():
 	_currState._timeout_effect()
 	emit_signal("DataUpdated",self)
 
-func complete():
+func execute(executor:MissionExecutor):
 	if _currState._completed == true:
 		return 
 		
-	_currState._complete_effect()
+	_currState._complete_effect(executor)
 	emit_signal("DataUpdated",self)
 
-func change_state(target):
+func change_state(target : Node):
 	_currState._ongoing_end_effect()
 	_currState = target
 	self.name = _currState.name

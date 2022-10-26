@@ -3,9 +3,6 @@ class_name Mission
 
 var region : Region
 
-signal MissionComplete()
-signal MissionTimedOut()
-signal MissionToRemove()
 signal DataUpdated()
 
 export var time_limit = 3 setget set_time_limit,get_time_limit
@@ -49,7 +46,7 @@ func _ongoing_effect(amount):
 func _ongoing_end_effect():
 	pass
 
-func _complete_effect():
+func _complete_effect(executor:MissionExecutor):
 	pass
 	
 func _timeout_effect():
@@ -77,12 +74,12 @@ func time_out():
 	emit_signal("DataUpdated",self)
 
 
-func complete():
+func execute(executor:MissionExecutor):
 	if _completed == true:
 		return 
 		
 	_completed = true
-	_complete_effect()
+	_complete_effect(executor)
 	icon_index = 3
 	emit_signal("DataUpdated",self)
 

@@ -1,4 +1,4 @@
-extends Node
+extends MissionExecutor
 class_name Ship
 
 signal RequestToMoveTo(region)
@@ -36,7 +36,7 @@ func set_mission_target(mission:Mission):
 		return
 	
 	if mission.region == self.region:
-		mission.complete()
+		mission.execute(self)
 		self.currAP -= 1
 
 func set_destination(destination:Region): 

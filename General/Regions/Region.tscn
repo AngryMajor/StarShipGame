@@ -1,0 +1,26 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://General/Regions/Region.gd" type="Script" id=1]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/Missions/HiddenDiscoveryMission.tscn" type="PackedScene" id=2]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/ExplorationLargeSegment.tscn" type="PackedScene" id=3]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/ExplorationSmallSegment.tscn" type="PackedScene" id=4]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/RegCompExploration.gd" type="Script" id=5]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/RegCompExplorationMissionGen.gd" type="Script" id=6]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/Missions/DiscoveryMission.tscn" type="PackedScene" id=7]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/Missions/ColoneySiteMission.tscn" type="PackedScene" id=8]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/Missions/ExplorationMission.tscn" type="PackedScene" id=9]
+[ext_resource path="res://General/Regions/Components/ExplorationComp/Missions/StartExplorationMission.tscn" type="PackedScene" id=10]
+
+[node name="Region" type="Node"]
+script = ExtResource( 1 )
+
+[node name="ExplorationComp" type="Node" parent="."]
+script = ExtResource( 5 )
+_smallTraySegment = ExtResource( 4 )
+_largeTraySegment = ExtResource( 3 )
+
+[node name="MissionGenerator" type="Node" parent="ExplorationComp"]
+script = ExtResource( 6 )
+startMission_scene = ExtResource( 10 )
+explorationMission_scenes = [ ExtResource( 9 ) ]
+discoveryMission_scenes = [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 8 ) ]

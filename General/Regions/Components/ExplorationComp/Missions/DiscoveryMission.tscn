@@ -6,10 +6,10 @@ script/source = "extends Mission
 func _ongoing_start_effect():
 	print_debug(\"something cool happens here\")
 
-func _complete_effect():
+func _complete_effect(executor:MissionExecutor):
 	print_debug(\"something cool ends here\")
 "
 
-[node name="Discovery" type="Node"]
+[node name="Coloney Site" type="Node"]
 script = SubResource( 1 )
 time_limit = -1
