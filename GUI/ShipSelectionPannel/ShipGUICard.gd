@@ -15,7 +15,7 @@ func init(ship:Ship):
 	my_ship = ship
 	my_ship.connect("DataUpdated",self,"_on_ship_updated")
 	$ShipLabel.text = my_ship.name
-	$APLable.text = String(my_ship.currAP)
+	_on_ship_updated()
 	display_ship_Region()
 	check_ship_available()
 	$ShipButton.connect("button_down",self,"on_button_down")
@@ -31,6 +31,7 @@ func on_selection_changed():
 
 func _on_ship_updated():
 	$APLable.text = String(my_ship.currAP)
+	$FuleLable.text = String(my_ship.currFule)
 	check_ship_available()
 	display_ship_Region()
 

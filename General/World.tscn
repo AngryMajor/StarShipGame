@@ -27,6 +27,9 @@ script = ExtResource( 2 )
 
 [node name="Region1" parent="RegionsMap/RegionList" instance=ExtResource( 4 )]
 
+[node name="ShipManager" parent="RegionsMap/RegionList/Region1" index="1"]
+refulingStationActive = true
+
 [node name="Region2" parent="RegionsMap/RegionList" instance=ExtResource( 4 )]
 
 [node name="Region3" parent="RegionsMap/RegionList" instance=ExtResource( 4 )]
@@ -97,3 +100,5 @@ _amount = 12
 script = ExtResource( 8 )
 resourceItemDisplay = ExtResource( 10 )
 _amount = 15
+
+[editable path="RegionsMap/RegionList/Region1"]

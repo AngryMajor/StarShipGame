@@ -4,3 +4,4 @@
 
 [node name="Ship" type="Node"]
 script = ExtResource( 1 )
+maxFule = 3

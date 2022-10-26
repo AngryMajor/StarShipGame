@@ -99,3 +99,20 @@ margin_bottom = 48.0
 texture = SubResource( 1 )
 expand = true
 stretch_mode = 5
+
+[node name="FuleText" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -54.0
+margin_top = 31.0
+margin_right = -9.0
+margin_bottom = 45.0
+text = "Fule:"
+
+[node name="FuleLable" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -24.0
+margin_top = 31.0
+margin_bottom = 45.0
+text = "111"
