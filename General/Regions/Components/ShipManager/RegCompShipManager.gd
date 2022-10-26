@@ -2,6 +2,8 @@ extends RegComp
 
 export(bool) var refulingStationActive = false
 
+signal Region_empty
+
 var shipsInRegion = []
 
 func _enter_tree():
@@ -22,4 +24,6 @@ func ship_leave(ship:Ship):
 	var ship_index = shipsInRegion.find(ship)
 	if ship_index != -1:
 		shipsInRegion.remove(ship_index)
+	if shipsInRegion.size() < 1:
+		emit_signal("Region_empty")
 

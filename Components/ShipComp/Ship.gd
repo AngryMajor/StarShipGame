@@ -30,13 +30,7 @@ func _exit_tree():
 	GameState.disconnect("time_progressed",self,"on_time_progressed")
 
 func on_time_progressed(amount:int):
-	var apSpent = self.baseAP - self.currAP
-	if currFuel >= baseAP:
-		self.currFuel -= apSpent
-		self.currAP = self.baseAP
-	elif currFuel > 0:
-		self.currAP = self.currFuel
-		self.currFuel = 0
+	self.currAP = self.baseAP
 
 func refuel():
 	self.currFuel = self.maxfuel

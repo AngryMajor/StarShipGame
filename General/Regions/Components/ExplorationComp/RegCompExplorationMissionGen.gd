@@ -12,6 +12,8 @@ export(Array,PackedScene) var discoveryMission_scenes
 
 export(int) var discoveryChance = 10
 	
+var sectorMissions : Array = []
+	
 func _ready():
 	if generate_exploration_missions:
 		call_deferred("_create_start_mission")
@@ -20,6 +22,7 @@ func _create_start_mission():
 	var explorationMission = startMission_scene.instance()
 	explorationMission.init(myRegion)
 	missionComp.add_mission(myRegion.id,explorationMission)
+	sectorMissions.append(explorationMission)
 			
 func generate_new_exploration_path(amount:int=1):
 	if generate_exploration_missions == false:
@@ -31,6 +34,7 @@ func generate_new_exploration_path(amount:int=1):
 		var explorationMission = explorationMission_scenes[mission_index].instance()
 		explorationMission.init(myRegion)
 		missionComp.add_mission(myRegion.id,explorationMission)
+		sectorMissions.append(explorationMission)
 	
 func generate_new_discoveries(amount:int=1):
 	if amount <= 0:
@@ -40,4 +44,16 @@ func generate_new_discoveries(amount:int=1):
 		var discoveryMission = discoveryMission_scenes[mission_index].instance()
 		discoveryMission.init(myRegion)
 		missionComp.add_mission(myRegion.id,discoveryMission)
+		sectorMissions.append(discoveryMission)
 		
+func clear_missions():
+	for mission in sectorMissions:
+		if is_instance_valid(mission) and mission != null:
+			mission.abandon()
+	
+		
+
+
+func _on_ShipManager_Region_empty():
+	clear_missions()
+	_create_start_mission()

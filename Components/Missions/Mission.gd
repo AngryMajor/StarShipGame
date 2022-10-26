@@ -88,6 +88,8 @@ func execute(executor:MissionExecutor):
 	_complete_effect(executor)
 	emit_signal("DataUpdated",self)
 
+func abandon():
+	_remove_mission()
 
 func _remove_mission():
 	_ongoing_end_effect()
